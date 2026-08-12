@@ -460,14 +460,14 @@
       <p class="hint">Reddy YNV et al. <i>Circulation</i> 2018;138(9):861–70.</p>
 
       <div class="field-row">
-        <div class="field"><label>Age <span class="unit">years</span></label><input type="number" id="h2_age" value="65" min="18" max="110"></div>
+        <div class="field"><label>Age <span class="unit">years</span></label><input type="number" id="h2_age" placeholder="e.g. 65" min="18" max="110"></div>
         <div class="field"><label>Sex</label>
-          <select id="h2_sex"><option value="m">Male</option><option value="f">Female</option></select>
+          <select id="h2_sex"><option value="" selected disabled>Select…</option><option value="m">Male</option><option value="f">Female</option></select>
         </div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Height <span class="unit">cm</span></label><input type="number" id="h2_ht" value="165" min="100" max="230"></div>
-        <div class="field"><label>Weight <span class="unit">kg</span></label><input type="number" id="h2_wt" value="80" min="30" max="250"></div>
+        <div class="field"><label>Height <span class="unit">cm</span></label><input type="number" id="h2_ht" placeholder="e.g. 165" min="100" max="230"></div>
+        <div class="field"><label>Weight <span class="unit">kg</span></label><input type="number" id="h2_wt" placeholder="e.g. 80" min="30" max="250"></div>
       </div>
       <div class="field full" style="margin-bottom:12px;">
         <label>Calculated BMI</label>
@@ -478,15 +478,15 @@
 
       <div class="field-row">
         <div class="field"><label>≥2 antihypertensive medicines</label>
-          <div class="seg" id="h2_htn"><button data-v="1">Yes</button><button data-v="0" class="on">No</button></div>
+          <div class="seg" id="h2_htn"><button data-v="1">Yes</button><button data-v="0">No</button></div>
         </div>
         <div class="field"><label>Paroxysmal / persistent AF</label>
-          <div class="seg" id="h2_af"><button data-v="1">Yes</button><button data-v="0" class="on">No</button></div>
+          <div class="seg" id="h2_af"><button data-v="1">Yes</button><button data-v="0">No</button></div>
         </div>
       </div>
       <div class="field-row">
-        <div class="field"><label>PASP <span class="unit">mmHg (echo)</span></label><input type="number" id="h2_pasp" value="30" min="0" max="150"></div>
-        <div class="field"><label>Average E/e′ <span class="unit">echo</span></label><input type="number" id="h2_eer" value="8" min="0" max="40" step="0.1"></div>
+        <div class="field"><label>PASP <span class="unit">mmHg (echo)</span></label><input type="number" id="h2_pasp" placeholder="e.g. 30" min="0" max="150"></div>
+        <div class="field"><label>Average E/e′ <span class="unit">echo</span></label><input type="number" id="h2_eer" placeholder="e.g. 8" min="0" max="40" step="0.1"></div>
       </div>
     </div>
   </div>
@@ -530,37 +530,37 @@
       <h2>Step 2 · Functional domain <span class="pt" id="hfa_f_pts">0 pts</span></h2>
       <p class="hint">Pieske B et al. <i>Eur Heart J</i> 2019;40(40):3297–317.</p>
       <div class="field-row">
-        <div class="field"><label>Septal e′ <span class="unit">cm/s</span></label><input type="number" id="hfa_septal" value="8" step="0.1"></div>
-        <div class="field"><label>Lateral e′ <span class="unit">cm/s</span></label><input type="number" id="hfa_lateral" value="11" step="0.1"></div>
+        <div class="field"><label>Septal e′ <span class="unit">cm/s</span></label><input type="number" id="hfa_septal" placeholder="e.g. 8" step="0.1"></div>
+        <div class="field"><label>Lateral e′ <span class="unit">cm/s</span></label><input type="number" id="hfa_lateral" placeholder="e.g. 11" step="0.1"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Average E/e′</label><input type="number" id="hfa_eer" value="10" step="0.1"></div>
-        <div class="field"><label>TR Vmax <span class="unit">m/s</span></label><input type="number" id="hfa_tr" value="2.4" step="0.1"></div>
+        <div class="field"><label>Average E/e′</label><input type="number" id="hfa_eer" placeholder="e.g. 10" step="0.1"></div>
+        <div class="field"><label>TR Vmax <span class="unit">m/s</span></label><input type="number" id="hfa_tr" placeholder="e.g. 2.4" step="0.1"></div>
       </div>
-      <div class="field full"><label>GLS <span class="unit">absolute %, e.g. 17</span></label><input type="number" id="hfa_gls" value="18" step="0.1"></div>
+      <div class="field full"><label>GLS <span class="unit">absolute %, e.g. 17</span></label><input type="number" id="hfa_gls" placeholder="e.g. 18" step="0.1"></div>
     </div>
 
     <div class="card">
       <h2>Morphological domain <span class="pt" id="hfa_m_pts">0 pts</span></h2>
       <div class="field-row">
-        <div class="field"><label>LAVI <span class="unit">mL/m²</span></label><input type="number" id="hfa_lavi" value="28" step="0.1"></div>
-        <div class="field"><label>Sex</label><select id="hfa_sex"><option value="m">Male</option><option value="f">Female</option></select></div>
+        <div class="field"><label>LAVI <span class="unit">mL/m²</span></label><input type="number" id="hfa_lavi" placeholder="e.g. 28" step="0.1"></div>
+        <div class="field"><label>Sex</label><select id="hfa_sex"><option value="" selected disabled>Select…</option><option value="m">Male</option><option value="f">Female</option></select></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>LVMI <span class="unit">g/m²</span></label><input type="number" id="hfa_lvmi" value="90" step="0.1"></div>
-        <div class="field"><label>RWT</label><input type="number" id="hfa_rwt" value="0.38" step="0.01"></div>
+        <div class="field"><label>LVMI <span class="unit">g/m²</span></label><input type="number" id="hfa_lvmi" placeholder="e.g. 90" step="0.1"></div>
+        <div class="field"><label>RWT</label><input type="number" id="hfa_rwt" placeholder="e.g. 0.38" step="0.01"></div>
       </div>
-      <div class="field full"><label>LV wall thickness <span class="unit">mm</span></label><input type="number" id="hfa_lvwt" value="9" step="0.1"></div>
+      <div class="field full"><label>LV wall thickness <span class="unit">mm</span></label><input type="number" id="hfa_lvwt" placeholder="e.g. 9" step="0.1"></div>
     </div>
 
     <div class="card">
       <h2>Biomarker domain <span class="pt" id="hfa_b_pts">0 pts</span></h2>
       <div class="field full" style="margin-bottom:12px;">
         <label>Rhythm</label>
-        <div class="seg" id="hfa_rhythm"><button data-v="sinus" class="on">Sinus</button><button data-v="af">Atrial fibrillation</button></div>
+        <div class="seg" id="hfa_rhythm"><button data-v="sinus">Sinus</button><button data-v="af">Atrial fibrillation</button></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>NT-proBNP <span class="unit">pg/mL</span></label><input type="number" id="hfa_ntprobnp" value="150"></div>
+        <div class="field"><label>NT-proBNP <span class="unit">pg/mL</span></label><input type="number" id="hfa_ntprobnp" placeholder="e.g. 150"></div>
         <div class="field"><label>BNP <span class="unit">pg/mL (if used instead)</span></label><input type="number" id="hfa_bnp" placeholder="optional"></div>
       </div>
     </div>
@@ -610,7 +610,7 @@
       <h2>Model type</h2>
       <p class="hint">Reddy YNV et al. <i>Nat Med</i> 2024;30(8):2258–64.</p>
       <div class="seg" id="aba_mode">
-        <button data-v="basic" class="on">Basic — no echo required</button>
+        <button data-v="basic">Basic — no echo required</button>
         <button data-v="advanced">Advanced — with echo</button>
       </div>
     </div>
@@ -618,12 +618,12 @@
     <div class="card">
       <h2>Patient inputs</h2>
       <div class="field-row">
-        <div class="field"><label>Age <span class="unit">years</span></label><input type="number" id="aba_age" value="65"></div>
-        <div class="field"><label>Sex</label><select id="aba_sex"><option value="m">Male</option><option value="f">Female</option></select></div>
+        <div class="field"><label>Age <span class="unit">years</span></label><input type="number" id="aba_age" placeholder="e.g. 65"></div>
+        <div class="field"><label>Sex</label><select id="aba_sex"><option value="" selected disabled>Select…</option><option value="m">Male</option><option value="f">Female</option></select></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Height <span class="unit">cm</span></label><input type="number" id="aba_ht" value="165"></div>
-        <div class="field"><label>Weight <span class="unit">kg</span></label><input type="number" id="aba_wt" value="80"></div>
+        <div class="field"><label>Height <span class="unit">cm</span></label><input type="number" id="aba_ht" placeholder="e.g. 165"></div>
+        <div class="field"><label>Weight <span class="unit">kg</span></label><input type="number" id="aba_wt" placeholder="e.g. 80"></div>
       </div>
       <div class="field full" style="margin-bottom:12px;">
         <label>Calculated BMI</label>
@@ -631,14 +631,14 @@
       </div>
       <div class="field full" style="margin-bottom:12px;">
         <label>Atrial fibrillation</label>
-        <div class="seg" id="aba_af"><button data-v="1">Yes</button><button data-v="0" class="on">No</button></div>
+        <div class="seg" id="aba_af"><button data-v="1">Yes</button><button data-v="0">No</button></div>
       </div>
       <div id="aba_echo_fields" style="display:none;">
         <hr class="divider">
         <p class="subhead">Echocardiographic inputs</p>
         <div class="field-row">
-          <div class="field"><label>Average E/e′</label><input type="number" id="aba_eer" value="8" step="0.1"></div>
-          <div class="field"><label>PASP <span class="unit">mmHg</span></label><input type="number" id="aba_pasp" value="30"></div>
+          <div class="field"><label>Average E/e′</label><input type="number" id="aba_eer" placeholder="e.g. 8" step="0.1"></div>
+          <div class="field"><label>PASP <span class="unit">mmHg</span></label><input type="number" id="aba_pasp" placeholder="e.g. 30"></div>
         </div>
       </div>
     </div>
@@ -706,7 +706,8 @@ function wireSeg(id, onChange){
   });
 }
 function segVal(id){
-  return $(id).querySelector('button.on').dataset.v;
+  const btn = $(id).querySelector('button.on');
+  return btn ? btn.dataset.v : null;
 }
 function setGauge(arcId, numId, fraction, colorVar){
   const circumference = 283;
@@ -727,16 +728,33 @@ document.querySelectorAll('#tabs button').forEach(btn=>{
 
 /* ---------------- H2FPEF ---------------- */
 function calcH2FPEF(){
-  const age = parseFloat($('h2_age').value)||0;
-  const ht = parseFloat($('h2_ht').value)||0;
-  const wt = parseFloat($('h2_wt').value)||0;
-  const bmi = ht>0 ? wt/((ht/100)*(ht/100)) : 0;
-  $('h2_bmi_out').textContent = bmi? bmi.toFixed(1)+' kg/m²' : '— kg/m²';
+  const ageStr = $('h2_age').value, htStr = $('h2_ht').value, wtStr = $('h2_wt').value;
+  const paspStr = $('h2_pasp').value, eerStr = $('h2_eer').value;
+  const htnSel = segVal('h2_htn');
+  const afSel = segVal('h2_af');
 
-  const htn = parseInt(segVal('h2_htn'));
-  const af = parseInt(segVal('h2_af'));
-  const pasp = parseFloat($('h2_pasp').value)||0;
-  const eer = parseFloat($('h2_eer').value)||0;
+  const ht = parseFloat(htStr), wt = parseFloat(wtStr);
+  const bmi = (htStr!=='' && wtStr!=='') ? wt/((ht/100)*(ht/100)) : NaN;
+  $('h2_bmi_out').textContent = !isNaN(bmi) ? bmi.toFixed(1)+' kg/m²' : '— kg/m²';
+
+  const complete = ageStr!=='' && htStr!=='' && wtStr!=='' && paspStr!=='' && eerStr!=='' && htnSel!==null && afSel!==null;
+
+  if(!complete){
+    $('h2_score_num').textContent = '—';
+    $('h2_pts_val').textContent = '— / 9';
+    $('h2_prob_val').textContent = '— %';
+    $('h2_cat').textContent = 'Awaiting input';
+    $('h2_cat').className = 'gauge-cat cat-neutral';
+    $('h2_interp').textContent = 'Enter all patient values to calculate.';
+    setGauge('h2_arc','h2_score_num', 0, 'rgba(255,255,255,0.18)');
+    return;
+  }
+
+  const age = parseFloat(ageStr);
+  const pasp = parseFloat(paspStr);
+  const eer = parseFloat(eerStr);
+  const htn = parseInt(htnSel);
+  const af = parseInt(afSel);
 
   let pts = 0;
   if(bmi>30) pts+=2;
@@ -771,21 +789,42 @@ $('h2_sex').addEventListener('change', calcH2FPEF);
 
 /* ---------------- HFA-PEFF ---------------- */
 function calcHFAPEFF(){
-  const septal = parseFloat($('hfa_septal').value);
-  const lateral = parseFloat($('hfa_lateral').value);
-  const eer = parseFloat($('hfa_eer').value);
-  const tr = parseFloat($('hfa_tr').value);
-  const gls = parseFloat($('hfa_gls').value);
+  const septalStr=$('hfa_septal').value, lateralStr=$('hfa_lateral').value, eerStr=$('hfa_eer').value,
+        trStr=$('hfa_tr').value, glsStr=$('hfa_gls').value;
+  const laviStr=$('hfa_lavi').value, sex=$('hfa_sex').value, lvmiStr=$('hfa_lvmi').value,
+        rwtStr=$('hfa_rwt').value, lvwtStr=$('hfa_lvwt').value;
+  const rhythm = segVal('hfa_rhythm');
+  const ntprobnpStr=$('hfa_ntprobnp').value, bnpStr=$('hfa_bnp').value;
+
+  const functionalComplete = septalStr!=='' && lateralStr!=='' && eerStr!=='' && trStr!=='' && glsStr!=='';
+  const morphComplete = laviStr!=='' && sex!=='' && lvmiStr!=='' && rwtStr!=='' && lvwtStr!=='';
+  const biomarkerComplete = rhythm!==null && (ntprobnpStr!=='' || bnpStr!=='');
+  const complete = functionalComplete && morphComplete && biomarkerComplete;
+
+  if(!complete){
+    $('hfa_f_pts').textContent = '— pts';
+    $('hfa_m_pts').textContent = '— pts';
+    $('hfa_b_pts').textContent = '— pts';
+    $('mini_f').textContent = '—';
+    $('mini_m').textContent = '—';
+    $('mini_b').textContent = '—';
+    $('hfa_score_num').textContent = '—';
+    $('hfa_cat').textContent = 'Awaiting input';
+    $('hfa_cat').className = 'gauge-cat cat-neutral';
+    $('hfa_interp').textContent = 'Enter echo and biomarker values across all three domains to calculate.';
+    $('hfa_step3_card').style.display = 'none';
+    setGauge('hfa_arc','hfa_score_num', 0, 'rgba(255,255,255,0.18)');
+    return;
+  }
+
+  const septal=parseFloat(septalStr), lateral=parseFloat(lateralStr), eer=parseFloat(eerStr),
+        tr=parseFloat(trStr), gls=parseFloat(glsStr);
 
   let fMajor = (septal<7) || (lateral<10) || (eer>=15) || (tr>2.8);
   let fMinor = (eer>=9 && eer<=14) || (gls<16);
   let fScore = fMajor?2:(fMinor?1:0);
 
-  const lavi = parseFloat($('hfa_lavi').value);
-  const sex = $('hfa_sex').value;
-  const lvmi = parseFloat($('hfa_lvmi').value);
-  const rwt = parseFloat($('hfa_rwt').value);
-  const lvwt = parseFloat($('hfa_lvwt').value);
+  const lavi=parseFloat(laviStr), lvmi=parseFloat(lvmiStr), rwt=parseFloat(rwtStr), lvwt=parseFloat(lvwtStr);
   const lvmiMajorCut = sex==='m'?149:122;
   const lvmiMinorCut = sex==='m'?115:95;
 
@@ -793,9 +832,8 @@ function calcHFAPEFF(){
   let mMinor = (lavi>=29 && lavi<=34) || (lvmi>lvmiMinorCut && rwt>0.42) || (lvwt>=12);
   let mScore = mMajor?2:(mMinor?1:0);
 
-  const rhythm = segVal('hfa_rhythm');
-  const ntprobnp = parseFloat($('hfa_ntprobnp').value);
-  const bnp = parseFloat($('hfa_bnp').value);
+  const ntprobnp = parseFloat(ntprobnpStr);
+  const bnp = parseFloat(bnpStr);
   let bMajor=false, bMinor=false;
   if(rhythm==='sinus'){
     bMajor = (ntprobnp>220) || (bnp>80);
@@ -839,9 +877,11 @@ $('hfa_step3_toggle').addEventListener('change', function(){
 ['hfa_ex_eer','hfa_ex_tr'].forEach(id=>$(id).addEventListener('input', evalStep3));
 function evalStep3(){
   if(!$('hfa_step3_toggle').checked) return;
-  const eer = parseFloat($('hfa_ex_eer').value);
-  const tr = parseFloat($('hfa_ex_tr').value);
-  if(isNaN(eer) && isNaN(tr)) { $('hfa_step3_result').style.display='none'; return; }
+  const eerStr = $('hfa_ex_eer').value;
+  const trStr = $('hfa_ex_tr').value;
+  if(eerStr==='' && trStr===''){ $('hfa_step3_result').style.display='none'; return; }
+  const eer = parseFloat(eerStr);
+  const tr = parseFloat(trStr);
   const positive = (eer>=15) || (tr>3.4);
   const box = $('hfa_step3_result');
   box.style.display='block';
@@ -859,19 +899,34 @@ wireSeg('aba_mode', ()=>{
   calcABA();
 });
 function calcABA(){
-  const age = parseFloat($('aba_age').value)||0;
-  const ht = parseFloat($('aba_ht').value)||0;
-  const wt = parseFloat($('aba_wt').value)||0;
-  const bmi = ht>0 ? wt/((ht/100)*(ht/100)) : 0;
-  $('aba_bmi_out').textContent = bmi? bmi.toFixed(1)+' kg/m²' : '— kg/m²';
-  const af = parseInt(segVal('aba_af'));
+  const ageStr=$('aba_age').value, htStr=$('aba_ht').value, wtStr=$('aba_wt').value;
+  const afSel = segVal('aba_af');
+  const ht=parseFloat(htStr), wt=parseFloat(wtStr);
+  const bmi = (htStr!=='' && wtStr!=='') ? wt/((ht/100)*(ht/100)) : NaN;
+  $('aba_bmi_out').textContent = !isNaN(bmi) ? bmi.toFixed(1)+' kg/m²' : '— kg/m²';
+
+  let echoStr1='', echoStr2='';
+  if(abaMode==='advanced'){
+    echoStr1 = $('aba_eer').value;
+    echoStr2 = $('aba_pasp').value;
+  }
+  const complete = ageStr!=='' && htStr!=='' && wtStr!=='' && afSel!==null && (abaMode==='basic' || (echoStr1!=='' && echoStr2!==''));
+
+  if(!complete){
+    $('aba_score_num').innerHTML = '—';
+    setGauge('aba_arc','aba_score_num', 0, 'rgba(255,255,255,0.18)');
+    return;
+  }
+
+  const age = parseFloat(ageStr);
+  const af = parseInt(afSel);
 
   let y;
   if(abaMode==='basic'){
     y = -7.78875077116607 + 0.0625642747159337*age + 0.135149246234458*bmi + 2.04080564803471*af;
   } else {
-    const eer = parseFloat($('aba_eer').value)||0;
-    const pasp = parseFloat($('aba_pasp').value)||0;
+    const eer = parseFloat(echoStr1);
+    const pasp = parseFloat(echoStr2);
     y = -9.19174463966566 + 0.0451129471272832*age + 0.130730156015681*bmi + 0.0858634402456586*eer + 0.051963758732548*pasp + 1.69968057294513*af;
   }
   const z = Math.exp(y);
@@ -885,7 +940,7 @@ function calcABA(){
 wireSeg('aba_af', calcABA);
 $('aba_sex').addEventListener('change', calcABA);
 
-/* initial calc */
+/* initial calc — panels start blank/awaiting input, no pre-filled values */
 calcH2FPEF();
 calcHFAPEFF();
 calcABA();
