@@ -1,0 +1,12 @@
+{
+  "name": "hfpef-calculator-auth",
+  "version": "1.0.0",
+  "description": "HFpEF calculator served behind HTTP Basic Auth",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
