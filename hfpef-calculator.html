@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>HFpEF Diagnostic Calculator · Boehringer Ingelheim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#00201B;
+    --dark:#00332A;
+    --brand:#00A76F;
+    --accent:#00E58A;
+    --bg:#F5F8F6;
+    --card:#FFFFFF;
+    --ink:#0C2420;
+    --muted:#5C7269;
+    --line:#DCE7E1;
+    --low:#0FA36B;
+    --interm:#E1A027;
+    --high:#D8484C;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+  h1,h2,h3,.display{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
+
+  /* ---------- HEADER ---------- */
+  header.top{
+    background:linear-gradient(155deg,var(--deep) 0%, var(--dark) 65%, #014a3a 100%);
+    color:#fff;
+    padding:22px 20px 26px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.top::after{
+    content:"";
+    position:absolute;
+    right:-60px; top:-60px;
+    width:220px; height:220px;
+    border:1.5px solid rgba(0,229,138,0.25);
+    border-radius:50%;
+  }
+  header.top::before{
+    content:"";
+    position:absolute;
+    right:10px; top:40px;
+    width:120px; height:120px;
+    border:1.5px solid rgba(0,229,138,0.18);
+    border-radius:50%;
+  }
+  .brandmark{
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:20px;
+  }
+  .brandmark .glyph{
+    width:30px;height:30px;flex:none;position:relative;
+  }
+  .brandmark .glyph svg{width:100%;height:100%;display:block;}
+  .brandmark .word{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:14.5px;
+    line-height:1.15;
+    color:var(--accent);
+    letter-spacing:0.01em;
+  }
+  header.top h1{
+    font-size:26px;
+    margin:0 0 6px;
+    max-width:520px;
+    position:relative;
+    z-index:1;
+  }
+  header.top p.sub{
+    margin:0;
+    color:rgba(255,255,255,0.72);
+    font-size:13.5px;
+    max-width:460px;
+    position:relative;
+    z-index:1;
+  }
+  .tag-forward{
+    position:absolute;
+    right:18px; bottom:14px;
+    font-family:'Manrope',sans-serif;
+    font-style:italic;
+    font-weight:800;
+    color:var(--accent);
+    font-size:13px;
+  }
+
+  /* ---------- TABS ---------- */
+  nav.tabs{
+    display:flex;
+    gap:6px;
+    padding:14px 16px 0;
+    overflow-x:auto;
+    max-width:980px;
+    margin:0 auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  nav.tabs::-webkit-scrollbar{display:none;}
+  nav.tabs button{
+    flex:none;
+    border:none;
+    background:#fff;
+    color:var(--muted);
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    padding:10px 15px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .15s ease;
+  }
+  nav.tabs button.active{
+    background:var(--dark);
+    color:#fff;
+    border-color:var(--dark);
+  }
+  nav.tabs button:hover:not(.active){
+    border-color:var(--brand);
+    color:var(--dark);
+  }
+
+  main{
+    max-width:980px;
+    margin:0 auto;
+    padding:18px 16px 0;
+  }
+
+  .banner-hypothetical{
+    background:#FFF6E6;
+    border:1px solid #F0CE8A;
+    color:#7A5A0E;
+    border-radius:12px;
+    padding:12px 14px;
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:16px;
+  }
+  .banner-hypothetical b{color:#7A5A0E;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:18px;
+    align-items:start;
+  }
+  @media (max-width:800px){
+    .grid{grid-template-columns:1fr;}
+  }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 18px 20px;
+    margin-bottom:16px;
+  }
+  .card h2{
+    font-size:15px;
+    margin:0 0 4px;
+    color:var(--dark);
+    display:flex; align-items:center; gap:8px;
+  }
+  .card h2 .pt{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    font-weight:600;
+    color:#fff;
+    background:var(--brand);
+    padding:2px 7px;
+    border-radius:20px;
+  }
+  .card p.hint{
+    margin:0 0 14px;
+    color:var(--muted);
+    font-size:12.5px;
+    line-height:1.5;
+  }
+
+  .field-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:12px;
+  }
+  .field{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  .field.full{grid-column:1 / -1;}
+  .field label{
+    font-size:12px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .field .unit{
+    font-weight:400;
+    color:var(--muted);
+    font-size:11px;
+  }
+  .field input[type=number], .field select{
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:10px 11px;
+    font-size:15px;
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--ink);
+    background:#FBFCFB;
+    outline:none;
+    transition:border-color .15s;
+    width:100%;
+  }
+  .field select{font-family:'Inter',sans-serif;font-size:13.5px;}
+  .field input:focus, .field select:focus{
+    border-color:var(--brand);
+    background:#fff;
+  }
+
+  .seg{
+    display:flex;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .seg button{
+    flex:1;
+    border:none;
+    background:#FBFCFB;
+    padding:9px 10px;
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:var(--muted);
+    cursor:pointer;
+    border-right:1.5px solid var(--line);
+  }
+  .seg button:last-child{border-right:none;}
+  .seg button.on{
+    background:var(--dark);
+    color:#fff;
+  }
+
+  .divider{
+    border:none;
+    border-top:1px dashed var(--line);
+    margin:16px 0;
+  }
+  .subhead{
+    font-size:11.5px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--brand);
+    margin:0 0 10px;
+  }
+
+  /* ---------- RESULTS PANEL ---------- */
+  .results{
+    position:sticky;
+    top:14px;
+  }
+  .results .card{
+    background:linear-gradient(160deg,var(--deep), var(--dark));
+    color:#fff;
+    border:none;
+  }
+  .results .card h2{color:var(--accent);}
+  .results .card p.hint{color:rgba(255,255,255,0.6);}
+
+  .gauge-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:6px 0 4px;
+  }
+  .gauge-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:40px;
+    font-weight:600;
+    margin-top:-46px;
+    color:#fff;
+  }
+  .gauge-cat{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:14px;
+    padding:5px 14px;
+    border-radius:999px;
+    margin-top:8px;
+    letter-spacing:0.01em;
+  }
+  .cat-low{background:rgba(15,163,107,0.18); color:#5FEBB2; border:1px solid rgba(95,235,178,0.4);}
+  .cat-interm{background:rgba(225,160,39,0.18); color:#F5C15E; border:1px solid rgba(245,193,94,0.4);}
+  .cat-high{background:rgba(216,72,76,0.18); color:#F58D90; border:1px solid rgba(245,141,144,0.4);}
+  .cat-neutral{background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.65); border:1px solid rgba(255,255,255,0.2);}
+
+  .result-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:9px 0;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    font-size:13px;
+  }
+  .result-line:last-child{border-bottom:none;}
+  .result-line .lbl{color:rgba(255,255,255,0.65);}
+  .result-line .val{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    color:#fff;
+  }
+  .interp{
+    margin-top:14px;
+    font-size:12.5px;
+    line-height:1.6;
+    color:rgba(255,255,255,0.78);
+    background:rgba(255,255,255,0.06);
+    border-radius:10px;
+    padding:11px 12px;
+  }
+
+  .domain-mini{
+    display:flex;
+    gap:8px;
+    margin-top:14px;
+  }
+  .domain-mini div{
+    flex:1;
+    text-align:center;
+    background:rgba(255,255,255,0.06);
+    border-radius:10px;
+    padding:8px 4px;
+  }
+  .domain-mini .n{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:18px;
+    font-weight:600;
+    display:block;
+  }
+  .domain-mini .l{
+    font-size:10px;
+    color:rgba(255,255,255,0.6);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+
+  details.pretest{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:10px 14px;
+    margin-bottom:14px;
+    background:#FAFCFB;
+  }
+  details.pretest summary{
+    cursor:pointer;
+    font-weight:700;
+    font-size:13px;
+    color:var(--dark);
+  }
+  details.pretest ul{
+    margin:10px 0 4px;
+    padding-left:18px;
+    font-size:12.5px;
+    color:var(--muted);
+    line-height:1.7;
+  }
+
+  .toggle-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    background:#fff;
+    border:1.5px solid var(--line);
+    padding:8px 12px;
+    border-radius:10px;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--dark);
+    cursor:pointer;
+    margin-bottom:10px;
+  }
+  .toggle-btn input{accent-color:var(--brand); width:15px;height:15px;}
+
+  footer{
+    max-width:980px;
+    margin:26px auto 0;
+    padding:16px 16px 0;
+    font-size:11px;
+    color:var(--muted);
+    line-height:1.7;
+    border-top:1px solid var(--line);
+  }
+  footer b{color:var(--ink);}
+
+  .pill-small{
+    display:inline-block;
+    font-size:10.5px;
+    font-weight:700;
+    color:var(--brand);
+    background:rgba(0,167,111,0.1);
+    padding:2px 8px;
+    border-radius:20px;
+    margin-left:6px;
+    vertical-align:middle;
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brandmark">
+    <span class="glyph">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18.5" stroke="#00E58A" stroke-width="1.4"/>
+        <circle cx="20" cy="20" r="12.5" stroke="#00E58A" stroke-width="1.4"/>
+        <rect x="17" y="10" width="6" height="20" rx="2" fill="#00E58A"/>
+      </svg>
+    </span>
+    <span class="word">Boehringer<br>Ingelheim</span>
+  </div>
+  <h1>HFpEF Diagnostic Calculator</h1>
+  <p class="sub">H2FPEF, HFA-PEFF, HFpEF-ABA &amp; obesity-adjusted probability tools · Medical Affairs decision-support</p>
+  <span class="tag-forward">Life forward</span>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button data-tab="h2fpef" class="active">H2FPEF Score</button>
+  <button data-tab="hfapeff">HFA-PEFF Score</button>
+  <button data-tab="aba">HFpEF-ABA Score</button>
+  <button data-tab="obesity">Obesity-Adjusted</button>
+</nav>
+
+<main>
+
+<!-- ================= H2FPEF ================= -->
+<section id="panel-h2fpef" class="panel">
+<div class="grid">
+  <div>
+    <div class="card">
+      <h2>Patient inputs <span class="pt">6 variables</span></h2>
+      <p class="hint">Reddy YNV et al. <i>Circulation</i> 2018;138(9):861–70.</p>
+
+      <div class="field-row">
+        <div class="field"><label>Age <span class="unit">years</span></label><input type="number" id="h2_age" value="65" min="18" max="110"></div>
+        <div class="field"><label>Sex</label>
+          <select id="h2_sex"><option value="m">Male</option><option value="f">Female</option></select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Height <span class="unit">cm</span></label><input type="number" id="h2_ht" value="165" min="100" max="230"></div>
+        <div class="field"><label>Weight <span class="unit">kg</span></label><input type="number" id="h2_wt" value="80" min="30" max="250"></div>
+      </div>
+      <div class="field full" style="margin-bottom:12px;">
+        <label>Calculated BMI</label>
+        <div class="mono" id="h2_bmi_out" style="font-size:15px;color:var(--brand);font-weight:600;">— kg/m²</div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="field-row">
+        <div class="field"><label>≥2 antihypertensive medicines</label>
+          <div class="seg" id="h2_htn"><button data-v="1">Yes</button><button data-v="0" class="on">No</button></div>
+        </div>
+        <div class="field"><label>Paroxysmal / persistent AF</label>
+          <div class="seg" id="h2_af"><button data-v="1">Yes</button><button data-v="0" class="on">No</button></div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>PASP <span class="unit">mmHg (echo)</span></label><input type="number" id="h2_pasp" value="30" min="0" max="150"></div>
+        <div class="field"><label>Average E/e′ <span class="unit">echo</span></label><input type="number" id="h2_eer" value="8" min="0" max="40" step="0.1"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="card">
+      <h2>Result</h2>
+      <div class="gauge-wrap">
+        <svg id="h2_gauge" viewBox="0 0 200 110" width="200">
+          <path d="M10,100 A90,90 0 0,1 190,100" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="14" stroke-linecap="round"/>
+          <path id="h2_arc" d="M10,100 A90,90 0 0,1 190,100" fill="none" stroke="#00E58A" stroke-width="14" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="283"/>
+        </svg>
+        <div class="gauge-num" id="h2_score_num">0</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.5);margin-top:2px;">out of 9 points</div>
+        <div class="gauge-cat cat-neutral" id="h2_cat">—</div>
+      </div>
+      <div class="result-line"><span class="lbl">Points score</span><span class="val" id="h2_pts_val">0 / 9</span></div>
+      <div class="result-line"><span class="lbl">Model probability</span><span class="val" id="h2_prob_val">— %</span></div>
+      <div class="interp" id="h2_interp">Enter patient values to calculate.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================= HFA-PEFF ================= -->
+<section id="panel-hfapeff" class="panel" style="display:none;">
+<div class="grid">
+  <div>
+    <details class="pretest">
+      <summary>Step 1 · Pre-test assessment (not scored — clinical gateway)</summary>
+      <ul>
+        <li><b>Symptoms/signs:</b> breathlessness, exercise intolerance, orthopnoea, PND, oedema</li>
+        <li><b>Risk factors:</b> age, hypertension, AF, CAD, diabetes, CKD, anaemia, COPD, obesity</li>
+        <li><b>Labs:</b> natriuretic peptides, Hb, HbA1c, ferritin, creatinine/eGFR, ALT, electrolytes</li>
+        <li><b>ECG:</b> AF, LVH by voltage criteria, LAA</li>
+        <li><b>Echo:</b> LVEF ≥50%, LVH, LA enlargement</li>
+      </ul>
+    </details>
+
+    <div class="card">
+      <h2>Step 2 · Functional domain <span class="pt" id="hfa_f_pts">0 pts</span></h2>
+      <p class="hint">Pieske B et al. <i>Eur Heart J</i> 2019;40(40):3297–317.</p>
+      <div class="field-row">
+        <div class="field"><label>Septal e′ <span class="unit">cm/s</span></label><input type="number" id="hfa_septal" value="8" step="0.1"></div>
+        <div class="field"><label>Lateral e′ <span class="unit">cm/s</span></label><input type="number" id="hfa_lateral" value="11" step="0.1"></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Average E/e′</label><input type="number" id="hfa_eer" value="10" step="0.1"></div>
+        <div class="field"><label>TR Vmax <span class="unit">m/s</span></label><input type="number" id="hfa_tr" value="2.4" step="0.1"></div>
+      </div>
+      <div class="field full"><label>GLS <span class="unit">absolute %, e.g. 17</span></label><input type="number" id="hfa_gls" value="18" step="0.1"></div>
+    </div>
+
+    <div class="card">
+      <h2>Morphological domain <span class="pt" id="hfa_m_pts">0 pts</span></h2>
+      <div class="field-row">
+        <div class="field"><label>LAVI <span class="unit">mL/m²</span></label><input type="number" id="hfa_lavi" value="28" step="0.1"></div>
+        <div class="field"><label>Sex</label><select id="hfa_sex"><option value="m">Male</option><option value="f">Female</option></select></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>LVMI <span class="unit">g/m²</span></label><input type="number" id="hfa_lvmi" value="90" step="0.1"></div>
+        <div class="field"><label>RWT</label><input type="number" id="hfa_rwt" value="0.38" step="0.01"></div>
+      </div>
+      <div class="field full"><label>LV wall thickness <span class="unit">mm</span></label><input type="number" id="hfa_lvwt" value="9" step="0.1"></div>
+    </div>
+
+    <div class="card">
+      <h2>Biomarker domain <span class="pt" id="hfa_b_pts">0 pts</span></h2>
+      <div class="field full" style="margin-bottom:12px;">
+        <label>Rhythm</label>
+        <div class="seg" id="hfa_rhythm"><button data-v="sinus" class="on">Sinus</button><button data-v="af">Atrial fibrillation</button></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>NT-proBNP <span class="unit">pg/mL</span></label><input type="number" id="hfa_ntprobnp" value="150"></div>
+        <div class="field"><label>BNP <span class="unit">pg/mL (if used instead)</span></label><input type="number" id="hfa_bnp" placeholder="optional"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="card">
+      <h2>Result</h2>
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 200 110" width="200">
+          <path d="M10,100 A90,90 0 0,1 190,100" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="14" stroke-linecap="round"/>
+          <path id="hfa_arc" d="M10,100 A90,90 0 0,1 190,100" fill="none" stroke="#00E58A" stroke-width="14" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="283"/>
+        </svg>
+        <div class="gauge-num" id="hfa_score_num">0</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.5);margin-top:2px;">out of 6 points</div>
+        <div class="gauge-cat cat-neutral" id="hfa_cat">—</div>
+      </div>
+      <div class="domain-mini">
+        <div><span class="n" id="mini_f">0</span><span class="l">Functional</span></div>
+        <div><span class="n" id="mini_m">0</span><span class="l">Morphology</span></div>
+        <div><span class="n" id="mini_b">0</span><span class="l">Biomarker</span></div>
+      </div>
+      <div class="interp" id="hfa_interp">Enter echo and biomarker values to calculate.</div>
+    </div>
+
+    <div class="card" id="hfa_step3_card" style="display:none;">
+      <h2>Step 3 · Functional testing</h2>
+      <p class="hint">Score is indeterminate (2–4) — a diastolic stress test can reclassify the patient.</p>
+      <label class="toggle-btn"><input type="checkbox" id="hfa_step3_toggle"> Diastolic stress test performed</label>
+      <div id="hfa_step3_inputs" style="display:none;">
+        <div class="field-row">
+          <div class="field"><label>Exercise avg E/e′</label><input type="number" id="hfa_ex_eer" step="0.1" placeholder="≥15 positive"></div>
+          <div class="field"><label>Exercise TR Vmax <span class="unit">m/s</span></label><input type="number" id="hfa_ex_tr" step="0.1" placeholder=">3.4 positive"></div>
+        </div>
+      </div>
+      <div class="interp" id="hfa_step3_result" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================= HFpEF-ABA ================= -->
+<section id="panel-aba" class="panel" style="display:none;">
+<div class="grid">
+  <div>
+    <div class="card">
+      <h2>Model type</h2>
+      <p class="hint">Reddy YNV et al. <i>Nat Med</i> 2024;30(8):2258–64.</p>
+      <div class="seg" id="aba_mode">
+        <button data-v="basic" class="on">Basic — no echo required</button>
+        <button data-v="advanced">Advanced — with echo</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Patient inputs</h2>
+      <div class="field-row">
+        <div class="field"><label>Age <span class="unit">years</span></label><input type="number" id="aba_age" value="65"></div>
+        <div class="field"><label>Sex</label><select id="aba_sex"><option value="m">Male</option><option value="f">Female</option></select></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Height <span class="unit">cm</span></label><input type="number" id="aba_ht" value="165"></div>
+        <div class="field"><label>Weight <span class="unit">kg</span></label><input type="number" id="aba_wt" value="80"></div>
+      </div>
+      <div class="field full" style="margin-bottom:12px;">
+        <label>Calculated BMI</label>
+        <div class="mono" id="aba_bmi_out" style="font-size:15px;color:var(--brand);font-weight:600;">— kg/m²</div>
+      </div>
+      <div class="field full" style="margin-bottom:12px;">
+        <label>Atrial fibrillation</label>
+        <div class="seg" id="aba_af"><button data-v="1">Yes</button><button data-v="0" class="on">No</button></div>
+      </div>
+      <div id="aba_echo_fields" style="display:none;">
+        <hr class="divider">
+        <p class="subhead">Echocardiographic inputs</p>
+        <div class="field-row">
+          <div class="field"><label>Average E/e′</label><input type="number" id="aba_eer" value="8" step="0.1"></div>
+          <div class="field"><label>PASP <span class="unit">mmHg</span></label><input type="number" id="aba_pasp" value="30"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="card">
+      <h2>Result</h2>
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 200 110" width="200">
+          <path d="M10,100 A90,90 0 0,1 190,100" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="14" stroke-linecap="round"/>
+          <path id="aba_arc" d="M10,100 A90,90 0 0,1 190,100" fill="none" stroke="#00E58A" stroke-width="14" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="283"/>
+        </svg>
+        <div class="gauge-num" id="aba_score_num">0<span style="font-size:16px;">%</span></div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.5);margin-top:2px;">probability of HFpEF</div>
+      </div>
+      <div class="result-line"><span class="lbl">Model used</span><span class="val" id="aba_model_val">Basic</span></div>
+      <div class="interp">This model outputs a continuous probability rather than a categorical score. Interpret alongside H2FPEF/HFA-PEFF and overall clinical context — no validated rule-in/rule-out cutoff is specified in the source publication.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================= OBESITY-ADJUSTED ================= -->
+<section id="panel-obesity" class="panel" style="display:none;">
+  <div class="banner-hypothetical">
+    <b>⚠ Not a validated clinical score.</b> van Dalen BM et al. (<i>Cardiovasc Diabetol</i> 2025;24:71) proposed this as a <b>hypothetical framework</b> to prompt discussion on diagnosing HFpEF in individuals with obesity (BMI ≥30 kg/m²) — it has not been prospectively validated and the exact modified numeric thresholds have not been published in a form suitable for a calculator. This panel is provided for educational awareness only.
+  </div>
+  <div class="card">
+    <h2>Why HFpEF is harder to diagnose with obesity</h2>
+    <p class="hint" style="margin-bottom:10px;">Reference: van Dalen BM, Chin JF, Motiram PA, et al. Challenges in the diagnosis of heart failure with preserved ejection fraction in individuals with obesity. <i>Cardiovasc Diabetol.</i> 2025;24(1):71.</p>
+    <ul style="font-size:13px;color:var(--ink);line-height:1.9;padding-left:18px;margin:0;">
+      <li>Natriuretic peptide levels are often <b>falsely lowered</b> by adiposity, so standard NT-proBNP/BNP cut-offs used in HFA-PEFF and H2FPEF may under-detect HFpEF.</li>
+      <li>BMI itself is a component of both H2FPEF and HFpEF-ABA, which can <b>inflate probability scores independent of cardiac status</b> in patients with obesity alone.</li>
+      <li>Echocardiographic image quality and chamber geometry assessment (LAVI, LV mass index, RWT) are frequently affected by body habitus.</li>
+      <li>Symptom overlap (dyspnoea, exercise intolerance, oedema) between obesity and HFpEF complicates the pre-test clinical gateway.</li>
+      <li>The authors propose applying the same <b>major/minor, domain-based logic as HFA-PEFF</b> (Functional, Morphological, Biomarker — each capped at 2 points) but with obesity-adjusted thresholds still under development.</li>
+    </ul>
+    <hr class="divider">
+    <p class="hint" style="margin:0;">Until a validated obesity-adjusted threshold set is published, consider running this patient through the <b>H2FPEF</b> and <b>HFA-PEFF</b> tabs while giving extra clinical weight to structural/functional echo findings over natriuretic peptide levels alone.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><b>For internal medical affairs / educational use only.</b> This tool supplements, and does not replace, clinical judgement and current ESC/HFA guidelines. Verify all inputs and outputs against source publications before use in patient care.</p>
+  <p><b>References:</b> (1) Reddy YNV et al. Circulation. 2018;138(9):861–70. (2) Pieske B et al. Eur Heart J. 2019;40(40):3297–317. (3) van Dalen BM et al. Cardiovasc Diabetol. 2025;24(1):71. (4) Reddy YNV et al. Nat Med. 2024;30(8):2258–64.</p>
+</footer>
+
+<script>
+function $(id){return document.getElementById(id);}
+function setSeg(container, onIndex){
+  const btns = container.querySelectorAll('button');
+  btns.forEach(b=>b.classList.remove('on'));
+}
+function wireSeg(id, onChange){
+  const c = $(id);
+  c.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      c.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+      btn.classList.add('on');
+      onChange();
+    });
+  });
+}
+function segVal(id){
+  return $(id).querySelector('button.on').dataset.v;
+}
+function setGauge(arcId, numId, fraction, colorVar){
+  const circumference = 283;
+  const offset = circumference - (circumference*Math.max(0,Math.min(1,fraction)));
+  $(arcId).setAttribute('stroke-dashoffset', offset);
+  $(arcId).setAttribute('stroke', colorVar);
+}
+
+/* ---------------- TAB SWITCHING ---------------- */
+document.querySelectorAll('#tabs button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('#tabs button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
+    $('panel-'+btn.dataset.tab).style.display='block';
+  });
+});
+
+/* ---------------- H2FPEF ---------------- */
+function calcH2FPEF(){
+  const age = parseFloat($('h2_age').value)||0;
+  const ht = parseFloat($('h2_ht').value)||0;
+  const wt = parseFloat($('h2_wt').value)||0;
+  const bmi = ht>0 ? wt/((ht/100)*(ht/100)) : 0;
+  $('h2_bmi_out').textContent = bmi? bmi.toFixed(1)+' kg/m²' : '— kg/m²';
+
+  const htn = parseInt(segVal('h2_htn'));
+  const af = parseInt(segVal('h2_af'));
+  const pasp = parseFloat($('h2_pasp').value)||0;
+  const eer = parseFloat($('h2_eer').value)||0;
+
+  let pts = 0;
+  if(bmi>30) pts+=2;
+  if(htn===1) pts+=1;
+  if(af===1) pts+=3;
+  if(pasp>35) pts+=1;
+  if(age>60) pts+=1;
+  if(eer>9) pts+=1;
+
+  const y = -9.19174463966566 + 0.0451129471272832*age + 0.130730156015681*bmi + 0.0858634402456586*eer + 0.051963758732548*pasp + 1.69968057294513*af;
+  const z = Math.exp(y);
+  const prob = (z/(1+z))*100;
+
+  $('h2_score_num').textContent = pts;
+  $('h2_pts_val').textContent = pts+' / 9';
+  $('h2_prob_val').textContent = prob.toFixed(1)+' %';
+
+  let cat, color, catClass, interp;
+  if(pts<=1){cat='Low probability'; color='#0FA36B'; catClass='cat-low'; interp='0–1 points: HFpEF is unlikely. Consider alternative causes of dyspnoea before further HF work-up.';}
+  else if(pts<=5){cat='Intermediate probability'; color='#E1A027'; catClass='cat-interm'; interp='2–5 points: Indeterminate. Consider further testing (e.g. diastolic stress echo, invasive haemodynamics) or apply HFA-PEFF.';}
+  else {cat='High probability'; color='#D8484C'; catClass='cat-high'; interp='6–9 points: High probability of underlying HFpEF. Diagnosis can generally be made with reasonable confidence.';}
+
+  $('h2_cat').textContent = cat;
+  $('h2_cat').className = 'gauge-cat '+catClass;
+  $('h2_interp').textContent = interp;
+  setGauge('h2_arc','h2_score_num', pts/9, color);
+}
+['h2_age','h2_ht','h2_wt','h2_pasp','h2_eer'].forEach(id=>$(id).addEventListener('input', calcH2FPEF));
+wireSeg('h2_htn', calcH2FPEF);
+wireSeg('h2_af', calcH2FPEF);
+$('h2_sex').addEventListener('change', calcH2FPEF);
+
+/* ---------------- HFA-PEFF ---------------- */
+function calcHFAPEFF(){
+  const septal = parseFloat($('hfa_septal').value);
+  const lateral = parseFloat($('hfa_lateral').value);
+  const eer = parseFloat($('hfa_eer').value);
+  const tr = parseFloat($('hfa_tr').value);
+  const gls = parseFloat($('hfa_gls').value);
+
+  let fMajor = (septal<7) || (lateral<10) || (eer>=15) || (tr>2.8);
+  let fMinor = (eer>=9 && eer<=14) || (gls<16);
+  let fScore = fMajor?2:(fMinor?1:0);
+
+  const lavi = parseFloat($('hfa_lavi').value);
+  const sex = $('hfa_sex').value;
+  const lvmi = parseFloat($('hfa_lvmi').value);
+  const rwt = parseFloat($('hfa_rwt').value);
+  const lvwt = parseFloat($('hfa_lvwt').value);
+  const lvmiMajorCut = sex==='m'?149:122;
+  const lvmiMinorCut = sex==='m'?115:95;
+
+  let mMajor = (lavi>34) || (lvmi>lvmiMajorCut && rwt>0.42);
+  let mMinor = (lavi>=29 && lavi<=34) || (lvmi>lvmiMinorCut && rwt>0.42) || (lvwt>=12);
+  let mScore = mMajor?2:(mMinor?1:0);
+
+  const rhythm = segVal('hfa_rhythm');
+  const ntprobnp = parseFloat($('hfa_ntprobnp').value);
+  const bnp = parseFloat($('hfa_bnp').value);
+  let bMajor=false, bMinor=false;
+  if(rhythm==='sinus'){
+    bMajor = (ntprobnp>220) || (bnp>80);
+    bMinor = (ntprobnp>=125 && ntprobnp<=220) || (bnp>=35 && bnp<=80);
+  } else {
+    bMajor = (ntprobnp>660) || (bnp>240);
+    bMinor = (ntprobnp>=365 && ntprobnp<=660) || (bnp>=105 && bnp<=240);
+  }
+  let bScore = bMajor?2:(bMinor?1:0);
+
+  const total = fScore+mScore+bScore;
+
+  $('hfa_f_pts').textContent = fScore+' pts';
+  $('hfa_m_pts').textContent = mScore+' pts';
+  $('hfa_b_pts').textContent = bScore+' pts';
+  $('mini_f').textContent = fScore;
+  $('mini_m').textContent = mScore;
+  $('mini_b').textContent = bScore;
+  $('hfa_score_num').textContent = total;
+
+  let cat, color, catClass, interp;
+  const step3card = $('hfa_step3_card');
+  if(total<=1){cat='HFpEF unlikely'; color='#0FA36B'; catClass='cat-low'; interp='Score \u22641: HFpEF unlikely. Consider alternative diagnoses for the patient\u2019s symptoms.'; step3card.style.display='none';}
+  else if(total<=4){cat='Indeterminate'; color='#E1A027'; catClass='cat-interm'; interp='Score 2–4: Indeterminate — proceed to Step 3 functional testing (diastolic stress test) to reclassify.'; step3card.style.display='block';}
+  else {cat='HFpEF confirmed'; color='#D8484C'; catClass='cat-high'; interp='Score ≥5: HFpEF is confirmed. Proceed to Step 4 to determine final etiology.'; step3card.style.display='none';}
+
+  $('hfa_cat').textContent = cat;
+  $('hfa_cat').className = 'gauge-cat '+catClass;
+  $('hfa_interp').textContent = interp;
+  setGauge('hfa_arc','hfa_score_num', total/6, color);
+}
+['hfa_septal','hfa_lateral','hfa_eer','hfa_tr','hfa_gls','hfa_lavi','hfa_lvmi','hfa_rwt','hfa_lvwt','hfa_ntprobnp','hfa_bnp'].forEach(id=>$(id).addEventListener('input', calcHFAPEFF));
+wireSeg('hfa_rhythm', calcHFAPEFF);
+$('hfa_sex').addEventListener('change', calcHFAPEFF);
+
+$('hfa_step3_toggle').addEventListener('change', function(){
+  $('hfa_step3_inputs').style.display = this.checked ? 'block' : 'none';
+  $('hfa_step3_result').style.display = 'none';
+  evalStep3();
+});
+['hfa_ex_eer','hfa_ex_tr'].forEach(id=>$(id).addEventListener('input', evalStep3));
+function evalStep3(){
+  if(!$('hfa_step3_toggle').checked) return;
+  const eer = parseFloat($('hfa_ex_eer').value);
+  const tr = parseFloat($('hfa_ex_tr').value);
+  if(isNaN(eer) && isNaN(tr)) { $('hfa_step3_result').style.display='none'; return; }
+  const positive = (eer>=15) || (tr>3.4);
+  const box = $('hfa_step3_result');
+  box.style.display='block';
+  box.textContent = positive
+    ? 'Step 3 positive: reclassify as HFpEF confirmed.'
+    : 'Step 3 negative: HFpEF unlikely — consider alternative diagnosis or invasive haemodynamic study if suspicion remains high.';
+}
+
+/* ---------------- HFpEF-ABA ---------------- */
+let abaMode = 'basic';
+wireSeg('aba_mode', ()=>{
+  abaMode = segVal('aba_mode');
+  $('aba_echo_fields').style.display = abaMode==='advanced' ? 'block':'none';
+  $('aba_model_val').textContent = abaMode==='advanced' ? 'Advanced (with echo)' : 'Basic (no echo)';
+  calcABA();
+});
+function calcABA(){
+  const age = parseFloat($('aba_age').value)||0;
+  const ht = parseFloat($('aba_ht').value)||0;
+  const wt = parseFloat($('aba_wt').value)||0;
+  const bmi = ht>0 ? wt/((ht/100)*(ht/100)) : 0;
+  $('aba_bmi_out').textContent = bmi? bmi.toFixed(1)+' kg/m²' : '— kg/m²';
+  const af = parseInt(segVal('aba_af'));
+
+  let y;
+  if(abaMode==='basic'){
+    y = -7.78875077116607 + 0.0625642747159337*age + 0.135149246234458*bmi + 2.04080564803471*af;
+  } else {
+    const eer = parseFloat($('aba_eer').value)||0;
+    const pasp = parseFloat($('aba_pasp').value)||0;
+    y = -9.19174463966566 + 0.0451129471272832*age + 0.130730156015681*bmi + 0.0858634402456586*eer + 0.051963758732548*pasp + 1.69968057294513*af;
+  }
+  const z = Math.exp(y);
+  const prob = (z/(1+z))*100;
+  $('aba_score_num').innerHTML = prob.toFixed(1)+'<span style="font-size:16px;">%</span>';
+  setGauge('aba_arc','aba_score_num', prob/100, prob>66?'#D8484C':(prob>33?'#E1A027':'#0FA36B'));
+}
+['aba_age','aba_ht','aba_wt','aba_eer','aba_pasp'].forEach(id=>{
+  if($(id)) $(id).addEventListener('input', calcABA);
+});
+wireSeg('aba_af', calcABA);
+$('aba_sex').addEventListener('change', calcABA);
+
+/* initial calc */
+calcH2FPEF();
+calcHFAPEFF();
+calcABA();
+</script>
+</body>
+</html>
