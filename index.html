@@ -174,6 +174,15 @@
   </div>
 
   <div class="edu-card">
+    <h2 data-i18n="screening_title"></h2>
+    <p data-i18n="screening_intro"></p>
+    <h3 data-i18n="screening_aba_title"></h3>
+    <p data-i18n="screening_aba_body"></p>
+    <h3 data-i18n="screening_other_title"></h3>
+    <p data-i18n="screening_other_body"></p>
+  </div>
+
+  <div class="edu-card">
     <h2 data-i18n="s4_title"></h2>
     <p data-i18n="s4_intro"></p>
     <div id="s4_items"></div>
@@ -252,7 +261,7 @@
 
 <footer>
   <p id="footerDisclaimer"></p>
-  <p><b>References:</b> Reddy YNV et al. Nat Med. 2024;30(8):2258–64 (HFpEF-ABA score). Sim D et al. Asian Pacific Society of Cardiology Consensus Statements on the Diagnosis and Management of Chronic Heart Failure, J Asian Pac Soc Cardiol. 2023. Atherton JJ et al. National Heart Foundation of Australia and Cardiac Society of Australia and New Zealand: Guidelines for the Prevention, Detection, and Management of Heart Failure in Australia 2018. hearts4heart, Recognising Heart Failure — GP Resource. Centre for Effective Practice, Managing Patients with Heart Failure in Primary Care Tool.</p>
+  <p><b>References:</b> Reddy YNV, Carter RE, Sundaram V, et al. An evidence-based screening tool for heart failure with preserved ejection fraction: the HFpEF-ABA score. Nat Med. 2024;30(8):2258–2264. doi:10.1038/s41591-024-03140-1. Reddy YNV, Carter RE, Obokata M, Redfield MM, Borlaug BA. A simple, evidence-based approach to help guide diagnosis of heart failure with preserved ejection fraction. Circulation. 2018;138(9):861–870. doi:10.1161/CIRCULATIONAHA.118.034646. Pieske B, Tschöpe C, de Boer RA, et al. How to diagnose heart failure with preserved ejection fraction: the HFA-PEFF diagnostic algorithm. Eur Heart J. 2019;40(40):3297–3317. doi:10.1093/eurheartj/ehz641. Saito Y, Kagiyama N, Harada T, et al. An evidence-based tool for screening for heart failure with preserved ejection fraction in primary care: the BREATH2 score. J Cardiol. 2025;86(3):264–271. doi:10.1016/j.jjcc.2025.03.018. Sim D, Lin W, Sindone A, et al. Asian Pacific Society of Cardiology consensus statements on the diagnosis and management of chronic heart failure. J Asian Pac Soc Cardiol. 2023;2:e10. doi:10.15420/japsc.2022.42. National Heart Foundation of Australia and Cardiac Society of Australia and New Zealand. Guidelines for the Prevention, Detection, and Management of Heart Failure in Australia. 2018. hearts4heart. Recognising Heart Failure — GP Resource. Centre for Effective Practice. Managing Patients with Heart Failure in Primary Care Tool.</p>
 </footer>
 
 <script>
@@ -281,13 +290,18 @@ en: {
   s3_risk: ["Age over 60–65","Hypertension","Atrial fibrillation","Obesity","Type 2 diabetes","Coronary artery disease or prior myocardial infarction"],
   s3_missed_title: "Why it gets missed",
   s3_missed_body: "Because these symptoms overlap so closely with normal aging, deconditioning, obesity, or COPD, HFpEF is easy to explain away. The single most useful shift for primary care: in a patient with several risk factors above who reports new or progressive breathlessness or fatigue, HFpEF should be an active differential — not a diagnosis of exclusion reached only after everything else has been ruled out.",
+  screening_title: "Screening for HFpEF",
+  screening_intro: "Once HFpEF is suspected clinically, a validated screening score can help quantify that suspicion using data already available in primary care — without requiring a referral or specialist test just to get a starting probability.",
+  screening_aba_title: "HFpEF-ABA Screening Score",
+  screening_aba_body: "The HFpEF-ABA score, developed by Reddy et al. and published in Nature Medicine (2024), was purpose-built to screen for HFpEF using only Age, BMI, and Atrial fibrillation history — no echocardiogram required. This makes it practical to calculate during a standard consultation, and it is the score used in the calculator below. It has been highlighted as a tool well suited to primary care and electronic medical record screening in recent expert consensus guidance.",
+  screening_other_title: "Other Screening & Diagnostic Tools You May Encounter",
+  screening_other_body: "Cardiology colleagues may reference other validated scores when refining a diagnosis, including H2FPEF and the HFA-PEFF algorithm, both of which require echocardiographic measurements (such as E/e′ and pulmonary artery systolic pressure), and newer tools such as the BREATH2 score, which uses routinely available labs, ECG, and chest X-ray findings. These are not included in this tool's calculator, but recognizing their names may be useful when reviewing a specialist's referral letter or report.",
   s4_title: "Guidelines & Resources for PCPs",
   s4_intro: "This tool draws on the following regional and international resources. Primary care teams are encouraged to consult these directly for full clinical detail.",
   s4_items: [
     {title:"APSC Consensus Statement on Chronic Heart Failure (2023)", body:"The Asian Pacific Society of Cardiology developed region-specific consensus recommendations for diagnosing and managing HF across the ejection fraction spectrum, recognizing that Asia-Pacific patients differ epidemiologically from the Western cohorts most guidelines are built on.", url:"https://www.japscjournal.com/articles/asian-pacific-society-cardiology-consensus-statements-diagnosis-and-management-chronic"},
     {title:"Australian Heart Failure Guidelines & GP Resources", body:"The National Heart Foundation of Australia and Cardiac Society of Australia and New Zealand's guidelines, alongside the hearts4heart 'Recognising Heart Failure' GP resource, provide practical, primary-care-focused guidance on recognizing and managing heart failure in the Australian setting.", url:"https://hearts4heart.org.au/wp-content/uploads/2022/05/H4H-Recognising-Heart-Failure-GP-Resource.pdf"},
-    {title:"Structured Primary Care HF Pathways", body:"Tools such as the Centre for Effective Practice's Heart Failure resource illustrate how structured, EMR-embeddable pathways covering assessment, diagnosis, referral, and monitoring can be built directly into primary care workflows, improving real-world uptake compared with a standalone reference document.", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"},
-    {title:"How this tool fits in", body:"This tool uses the HFpEF-ABA score — validated to screen for HFpEF using only age, BMI, and atrial fibrillation status, without requiring echocardiography — so it can be used directly during a primary care consultation. The result is paired with a suggested next step: monitor, order NT-proBNP, or refer to cardiology."}
+    {title:"Structured Primary Care HF Pathways", body:"Tools such as the Centre for Effective Practice's Heart Failure resource illustrate how structured, EMR-embeddable pathways covering assessment, diagnosis, referral, and monitoring can be built directly into primary care workflows, improving real-world uptake compared with a standalone reference document.", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"}
   ],
   calc_title: "HFpEF-ABA Screening Calculator",
   calc_subtitle: "No echocardiogram required · Reddy YNV et al., Nat Med 2024;30(8):2258–64",
@@ -314,7 +328,8 @@ en: {
   symptom_checker_intro: "Select all that apply. This is a quick prompt, not a scored assessment.",
   symptom_prompt_positive: "This symptom pattern is consistent with possible HFpEF, especially if risk factors are also present. Consider screening this patient now.",
   symptom_prompt_negative: "No major symptoms selected. If clinical suspicion remains for another reason, you can still proceed to screening.",
-  footer_disclaimer: "For educational and clinical decision-support use only. Not a substitute for clinical judgement or current regional guidelines. Verify all inputs and outputs before use in patient care."
+  disclaimer_label: "Disclaimer:",
+  footer_disclaimer: "This tool was developed by the Boehringer Ingelheim Medical Affairs team. The screening calculator is based on the HFpEF-ABA score, a validated, peer-reviewed screening tool, and the educational content draws on highly reputable, publicly available references and regional guideline consensus statements. References publicly available guidelines and screening scores; this is not an official partnership with the cited organizations. It is not a substitute for clinical judgement or current regional guidelines. Verify all inputs and outputs before use in patient care."
 },
 ko: {
   banner: "한국어, 태국어, 베트남어, 중국어, 말레이시아어 번역은 AI가 초안을 작성한 것으로, 현지 임상팀의 검토가 필요합니다. 영문판이 검증된 기준 버전입니다.",
@@ -337,13 +352,18 @@ ko: {
   s3_risk: ["60–65세 이상","고혈압","심방세동","비만","제2형 당뇨병","관상동맥질환 또는 심근경색 병력"],
   s3_missed_title: "왜 놓치기 쉬운가",
   s3_missed_body: "이러한 증상들은 정상적인 노화, 신체 기능 저하, 비만, 또는 만성폐쇄성폐질환(COPD)과 매우 유사하게 나타나기 때문에 HFpEF는 쉽게 다른 원인으로 설명되곤 합니다. 1차 진료에서 가장 유용한 관점의 전환은 다음과 같습니다: 위에 언급된 여러 위험 요인을 가진 환자가 새롭게 발생했거나 진행 중인 호흡곤란이나 피로를 호소할 경우, HFpEF는 다른 모든 원인을 배제한 후에야 고려하는 배제 진단이 아니라, 적극적으로 감별해야 할 진단이어야 합니다.",
+  screening_title: "HFpEF 선별검사",
+  screening_intro: "임상적으로 HFpEF가 의심되면, 검증된 선별 점수를 활용하여 1차 진료에서 이미 확보 가능한 데이터만으로 그 의심을 정량화할 수 있습니다 — 단지 초기 확률을 얻기 위해 의뢰나 전문의 검사가 필요하지 않습니다.",
+  screening_aba_title: "HFpEF-ABA 선별 점수",
+  screening_aba_body: "HFpEF-ABA 점수는 Reddy 등이 개발하여 Nature Medicine(2024)에 발표한 것으로, 나이, BMI, 심방세동 병력만을 사용하여 HFpEF를 선별하도록 특별히 고안되었습니다 — 심초음파가 필요하지 않습니다. 이를 통해 일반적인 진료 중에도 계산이 가능하며, 아래 계산기에서 사용되는 점수이기도 합니다. 최근 전문가 합의 지침에서는 1차 진료 및 전자의무기록(EMR) 선별에 적합한 도구로 강조된 바 있습니다.",
+  screening_other_title: "접할 수 있는 다른 선별 및 진단 도구",
+  screening_other_body: "심장내과 동료들은 진단을 정교화할 때 H2FPEF나 HFA-PEFF 알고리즘과 같은 다른 검증된 점수를 참고할 수 있으며, 이들은 모두 심초음파 측정(예: E/e′ 및 폐동맥 수축기압)을 필요로 합니다. 또한 일상적으로 이용 가능한 검사, 심전도, 흥부 X선 소견을 활용하는 BREATH2 점수와 같은 최신 도구도 있습니다. 이러한 도구들은 본 계산기에는 포함되어 있지 않지만, 전문의의 의뢰서나 보고서를 검토할 때 그 명칭을 알아두면 도움이 될 수 있습니다.",
   s4_title: "1차 진료의를 위한 가이드라인 및 자료",
   s4_intro: "이 도구는 다음의 지역 및 국제 자료를 참고하여 개발되었습니다. 1차 진료팀은 전체 임상 세부사항을 위해 해당 자료를 직접 참조하시기 바랍니다.",
   s4_items: [
     {title:"APSC 만성 심부전 합의문 (2023)", body:"아시아태평양심장학회(APSC)는 아시아태평양 환자들이 대부분의 지침이 기반하는 서구 코호트와 역학적으로 다르다는 점을 인식하여, 박출률 전 범위에 걸친 심부전 진단 및 관리에 대한 지역 특화 합의 권고안을 개발했습니다.", url:"https://www.japscjournal.com/articles/asian-pacific-society-cardiology-consensus-statements-diagnosis-and-management-chronic"},
     {title:"호주 심부전 지침 및 GP 자료", body:"호주 국립심장재단과 호주뉴질랜드 심장학회의 지침, 그리고 hearts4heart의 'Recognising Heart Failure' GP 자료는 호주 현지 환경에서 심부전을 인지하고 관리하는 데 실용적이고 1차 진료 중심의 지침을 제공합니다.", url:"https://hearts4heart.org.au/wp-content/uploads/2022/05/H4H-Recognising-Heart-Failure-GP-Resource.pdf"},
-    {title:"구조화된 1차 진료 심부전 경로", body:"Centre for Effective Practice의 심부전 자료와 같은 도구는 평가, 진단, 의뢰, 모니터링을 포괄하는 구조화된 EMR 내장형 경로가 독립형 참고 문서에 비해 실제 임상 현장에서의 활용도를 어떻게 높일 수 있는지 보여줍니다.", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"},
-    {title:"이 도구가 어떻게 활용되는가", body:"이 도구는 나이, BMI, 심방세동 여부만으로 심초음파 없이 HFpEF를 선별할 수 있도록 검증된 HFpEF-ABA 점수를 사용하므로, 1차 진료 상담 중 바로 사용할 수 있습니다. 결과에는 관찰, NT-proBNP 검사 시행, 또는 심장내과 의뢰와 같은 권장 다음 단계가 함께 제시됩니다."}
+    {title:"구조화된 1차 진료 심부전 경로", body:"Centre for Effective Practice의 심부전 자료와 같은 도구는 평가, 진단, 의뢰, 모니터링을 포괄하는 구조화된 EMR 내장형 경로가 독립형 참고 문서에 비해 실제 임상 현장에서의 활용도를 어떻게 높일 수 있는지 보여줍니다.", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"}
   ],
   calc_title: "HFpEF-ABA 선별 계산기",
   calc_subtitle: "심초음파 불필요 · Reddy YNV 등, Nat Med 2024;30(8):2258–64",
@@ -370,7 +390,8 @@ ko: {
   symptom_checker_intro: "해당하는 항목을 모두 선택하십시오. 이는 간단한 안내이며 점수화된 평가가 아닙니다.",
   symptom_prompt_positive: "이 증상 패턴은 위험 요인이 함께 있는 경우 특히 HFpEF 가능성과 일치합니다. 지금 이 환자를 선별검사하는 것을 고려하십시오.",
   symptom_prompt_negative: "주요 증상이 선택되지 않았습니다. 다른 이유로 임상적 의심이 남아있다면 선별검사를 계속 진행할 수 있습니다.",
-  footer_disclaimer: "교육 및 임상 의사결정 지원 목적으로만 사용하십시오. 임상적 판단이나 현행 지역 지침을 대체하지 않습니다. 환자 진료에 사용하기 전에 모든 입력값과 결과를 확인하십시오."
+  disclaimer_label: "면책 조항:",
+  footer_disclaimer: "본 도구는 Boehringer Ingelheim 의학부(Medical Affairs)가 개발하였습니다. 이 선별 계산기는 검증된 동료 심사 선별 도구인 HFpEF-ABA 점수를 기반으로 하며, 교육 콘텐츠는 신뢰도 높은 공개 자료 및 지역 지침 합의문을 참고하였습니다. 공개적으로 이용 가능한 지침 및 선별 점수를 참고한 것이며, 인용된 기관과의 공식적인 제휴 관계는 아닙니다. 본 도구는 임상적 판단이나 현행 지역 지침을 대체하지 않습니다. 환자 진료에 사용하기 전에 모든 입력값과 결과를 확인하십시오."
 },
 th: {
   banner: "คำแปลภาษาเกาหลี ไทย เวียดนาม จีน และมาเลเซีย จัดทำโดย AI เบื้องต้น และรอการตรวจสอบจากทีมแพทย์ในพื้นที่ ฉบับภาษาอังกฤษเป็นฉบับอ้างอิงที่ผ่านการตรวจสอบแล้ว",
@@ -393,13 +414,18 @@ th: {
   s3_risk: ["อายุมากกว่า 60–65 ปี","ความดันโลหิตสูง","ภาวะหัวใจเต้นผิดจังหวะชนิดเอเทรียลฟิบริลเลชัน","โรคอ้วน","เบาหวานชนิดที่ 2","โรคหลอดเลือดหัวใจหรือเคยกล้ามเนื้อหัวใจตาย"],
   s3_missed_title: "เหตุใดจึงมักถูกมองข้าม",
   s3_missed_body: "เนื่องจากอาการเหล่านี้คล้ายคลึงกับภาวะสูงวัยตามปกติ ภาวะร่างกายเสื่อมสภาพ โรคอ้วน หรือโรคปอดอุดกั้นเรื้อรัง (COPD) อย่างมาก จึงมักถูกอธิบายไปในทางอื่นได้ง่าย มุมมองที่มีประโยชน์ที่สุดสำหรับเวชปฏิบัติทั่วไปคือ: ในผู้ป่วยที่มีปัจจัยเสี่ยงข้างต้นหลายข้อและมีอาการหายใจลำบากหรืออ่อนเพลียที่เพิ่งเกิดขึ้นหรือแย่ลง ควรพิจารณา HFpEF เป็นการวินิจฉัยแยกโรคที่ต้องพิจารณาอย่างจริงจัง ไม่ใช่การวินิจฉัยที่ได้มาหลังจากตัดสาเหตุอื่นๆ ออกไปหมดแล้วเท่านั้น",
+  screening_title: "การคัดกรอง HFpEF",
+  screening_intro: "เมื่อสงสัยทางคลินิกว่าอาจเป็น HFpEF คะแนนคัดกรองที่ผ่านการตรวจสอบความถูกต้องสามารถช่วยประเมินระดับความสงสัยนั้นได้โดยใช้ข้อมูลที่มีอยู่แล้วในเวชปฏิบัติทั่วไป โดยไม่จำเป็นต้องส่งต่อหรือตรวจโดยผู้เชี่ยวชาญเพียงเพื่อให้ได้ค่าความน่าจะเป็นเบื้องต้น",
+  screening_aba_title: "คะแนนคัดกรอง HFpEF-ABA",
+  screening_aba_body: "คะแนน HFpEF-ABA พัฒนาโดย Reddy และคณะ ตีพิมพ์ใน Nature Medicine (2024) ถูกออกแบบมาโดยเฉพาะเพื่อคัดกรอง HFpEF โดยใช้เพียงอายุ ดัชนีมวลกาย และประวัติภาวะหัวใจเต้นผิดจังหวะชนิดเอเทรียลฟิบริลเลชัน โดยไม่ต้องใช้การตรวจอัลตราซาวด์หัวใจ ทำให้สามารถคำนวณได้ในระหว่างการตรวจรักษาตามปกติ และเป็นคะแนนที่ใช้ในเครื่องคำนวณด้านล่างนี้ แนวทางฉันทามติจากผู้เชี่ยวชาญล่าสุดได้เน้นย้ำว่าเป็นเครื่องมือที่เหมาะสมสำหรับการคัดกรองในเวชปฏิบัติทั่วไปและระบบเวชระเบียนอิเล็กทรอนิกส์",
+  screening_other_title: "เครื่องมือคัดกรองและวินิจฉัยอื่นๆ ที่อาจพบ",
+  screening_other_body: "แพทย์โรคหัวใจอาจอ้างอิงคะแนนที่ผ่านการตรวจสอบความถูกต้องอื่นๆ เมื่อต้องการวินิจฉัยให้ชัดเจนขึ้น รวมถึง H2FPEF และอัลกอริทึม HFA-PEFF ซึ่งทั้งสองต้องใช้การวัดค่าจากการตรวจอัลตราซาวด์หัวใจ (เช่น E/e′ และความดันซิสโตลิกของหลอดเลือดแดงปอด) รวมถึงเครื่องมือใหม่ๆ เช่น คะแนน BREATH2 ซึ่งใช้ผลตรวจทางห้องปฏิบัติการ คลื่นไฟฟ้าหัวใจ และภาพถ่ายรังสีทรวงอกที่มีอยู่ทั่วไป เครื่องมือเหล่านี้ไม่ได้รวมอยู่ในเครื่องคำนวณนี้ แต่การรู้จักชื่อเหล่านี้อาจเป็นประโยชน์เมื่อพิจารณาจดหมายส่งต่อหรือรายงานจากผู้เชี่ยวชาญ",
   s4_title: "แนวทางและแหล่งข้อมูลสำหรับแพทย์เวชปฏิบัติทั่วไป",
   s4_intro: "เครื่องมือนี้อ้างอิงจากแหล่งข้อมูลระดับภูมิภาคและนานาชาติดังต่อไปนี้ ขอแนะนำให้ทีมเวชปฏิบัติทั่วไปศึกษาเอกสารต้นฉบับโดยตรงเพื่อรายละเอียดทางคลินิกฉบับเต็ม",
   s4_items: [
     {title:"แถลงการณ์ฉันทามติ APSC ว่าด้วยภาวะหัวใจล้มเหลวเรื้อรัง (2023)", body:"สมาคมโรคหัวใจแห่งเอเชียแปซิฟิก (APSC) พัฒนาคำแนะนำฉันทามติเฉพาะภูมิภาคสำหรับการวินิจฉัยและจัดการภาวะหัวใจล้มเหลวในทุกช่วงของค่าการบีบตัวของหัวใจ โดยตระหนักว่าผู้ป่วยเอเชียแปซิฟิกมีลักษณะทางระบาดวิทยาที่แตกต่างจากกลุ่มประชากรตะวันตกที่แนวทางส่วนใหญ่อ้างอิง", url:"https://www.japscjournal.com/articles/asian-pacific-society-cardiology-consensus-statements-diagnosis-and-management-chronic"},
     {title:"แนวทางภาวะหัวใจล้มเหลวและแหล่งข้อมูลสำหรับแพทย์ทั่วไปของออสเตรเลีย", body:"แนวทางของ National Heart Foundation of Australia และ Cardiac Society of Australia and New Zealand ร่วมกับเอกสาร 'Recognising Heart Failure' สำหรับแพทย์ทั่วไปโดย hearts4heart ให้แนวทางเชิงปฏิบัติที่เน้นเวชปฏิบัติทั่วไปสำหรับการสังเกตและจัดการภาวะหัวใจล้มเหลวในบริบทของออสเตรเลีย", url:"https://hearts4heart.org.au/wp-content/uploads/2022/05/H4H-Recognising-Heart-Failure-GP-Resource.pdf"},
-    {title:"แนวทางเวชปฏิบัติทั่วไปสำหรับภาวะหัวใจล้มเหลวแบบมีโครงสร้าง", body:"เครื่องมือเช่นแหล่งข้อมูลภาวะหัวใจล้มเหลวของ Centre for Effective Practice แสดงให้เห็นว่าแนวทางที่มีโครงสร้างและสามารถฝังในระบบเวชระเบียนอิเล็กทรอนิกส์ ครอบคลุมการประเมิน การวินิจฉัย การส่งต่อ และการติดตามผล สามารถนำไปใช้ในกระบวนการทำงานของเวชปฏิบัติทั่วไปได้โดยตรง ซึ่งช่วยเพิ่มการนำไปใช้จริงเมื่อเทียบกับเอกสารอ้างอิงเดี่ยว", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"},
-    {title:"เครื่องมือนี้เหมาะสมอย่างไร", body:"เครื่องมือนี้ใช้คะแนน HFpEF-ABA ซึ่งผ่านการตรวจสอบความถูกต้องสำหรับการคัดกรอง HFpEF โดยใช้เพียงอายุ ดัชนีมวลกาย และประวัติภาวะหัวใจเต้นผิดจังหวะชนิดเอเทรียลฟิบริลเลชัน โดยไม่จำเป็นต้องใช้การตรวจอัลตราซาวด์หัวใจ จึงสามารถใช้ได้โดยตรงระหว่างการให้คำปรึกษาในเวชปฏิบัติทั่วไป ผลลัพธ์จะมาพร้อมกับขั้นตอนถัดไปที่แนะนำ ได้แก่ การติดตามอาการ การสั่งตรวจ NT-proBNP หรือการส่งต่อไปยังแพทย์โรคหัวใจ"}
+    {title:"แนวทางเวชปฏิบัติทั่วไปสำหรับภาวะหัวใจล้มเหลวแบบมีโครงสร้าง", body:"เครื่องมือเช่นแหล่งข้อมูลภาวะหัวใจล้มเหลวของ Centre for Effective Practice แสดงให้เห็นว่าแนวทางที่มีโครงสร้างและสามารถฝังในระบบเวชระเบียนอิเล็กทรอนิกส์ ครอบคลุมการประเมิน การวินิจฉัย การส่งต่อ และการติดตามผล สามารถนำไปใช้ในกระบวนการทำงานของเวชปฏิบัติทั่วไปได้โดยตรง ซึ่งช่วยเพิ่มการนำไปใช้จริงเมื่อเทียบกับเอกสารอ้างอิงเดี่ยว", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"}
   ],
   calc_title: "เครื่องคำนวณคัดกรอง HFpEF-ABA",
   calc_subtitle: "ไม่ต้องใช้การตรวจอัลตราซาวด์หัวใจ · Reddy YNV และคณะ, Nat Med 2024;30(8):2258–64",
@@ -426,7 +452,8 @@ th: {
   symptom_checker_intro: "เลือกอาการทั้งหมดที่ตรงกับผู้ป่วย นี่เป็นเพียงข้อเสนอแนะเบื้องต้น ไม่ใช่การประเมินแบบให้คะแนน",
   symptom_prompt_positive: "รูปแบบอาการนี้สอดคล้องกับความเป็นไปได้ของ HFpEF โดยเฉพาะหากมีปัจจัยเสี่ยงร่วมด้วย ควรพิจารณาคัดกรองผู้ป่วยรายนี้ในขณะนี้",
   symptom_prompt_negative: "ไม่มีการเลือกอาการสำคัญ หากยังคงมีข้อสงสัยทางคลินิกด้วยเหตุผลอื่น ท่านยังสามารถดำเนินการคัดกรองต่อได้",
-  footer_disclaimer: "สำหรับวัตถุประสงค์ทางการศึกษาและสนับสนุนการตัดสินใจทางคลินิกเท่านั้น ไม่ใช่สิ่งทดแทนดุลยพินิจทางคลินิกหรือแนวทางระดับภูมิภาคฉบับปัจจุบัน โปรดตรวจสอบข้อมูลนำเข้าและผลลัพธ์ทั้งหมดก่อนนำไปใช้ในการดูแลผู้ป่วย"
+  disclaimer_label: "ข้อจำกัดความรับผิดชอบ:",
+  footer_disclaimer: "เครื่องมือนี้พัฒนาขึ้นโดยทีมฝ่ายการแพทย์ (Medical Affairs) ของ Boehringer Ingelheim เครื่องคำนวณคัดกรองนี้อ้างอิงจากคะแนน HFpEF-ABA ซึ่งเป็นเครื่องมือคัดกรองที่ผ่านการตรวจสอบโดยผู้เชี่ยวชาญและได้รับการรับรอง ส่วนเนื้อหาทางการศึกษาอ้างอิงจากแหล่งข้อมูลสาธารณะที่น่าเชื่อถือสูงและแถลงการณ์ฉันทามติแนวทางระดับภูมิภาค ทรัพยากรนี้อ้างอิงแนวทางและคะแนนคัดกรองที่เปิดเผยต่อสาธารณะ ไม่ได้เป็นความร่วมมืออย่างเป็นทางการกับหน่วยงานที่อ้างอิง เครื่องมือนี้ไม่สามารถทดแทนดุลยพินิจทางคลินิกหรือแนวทางระดับภูมิภาคฉบับปัจจุบัน โปรดตรวจสอบข้อมูลนำเข้าและผลลัพธ์ทั้งหมดก่อนนำไปใช้ในการดูแลผู้ป่วย"
 },
 vi: {
   banner: "Bản dịch tiếng Hàn, Thái, Việt, Trung và Malaysia được AI soạn thảo và đang chờ đội ngũ lâm sàng địa phương xem xét. Bản tiếng Anh là phiên bản tham chiếu đã được xác thực.",
@@ -449,13 +476,18 @@ vi: {
   s3_risk: ["Trên 60–65 tuổi","Tăng huyết áp","Rung nhĩ","Béo phì","Đái tháo đường týp 2","Bệnh động mạch vành hoặc tiền sử nhồi máu cơ tim"],
   s3_missed_title: "Vì sao dễ bị bỏ sót",
   s3_missed_body: "Vì các triệu chứng này trùng lặp rất nhiều với lão hóa bình thường, suy giảm thể lực, béo phì, hoặc bệnh phổi tắc nghẽn mạn tính (COPD), HFpEF rất dễ bị giải thích bằng nguyên nhân khác. Sự thay đổi hữu ích nhất đối với chăm sóc ban đầu là: ở một bệnh nhân có nhiều yếu tố nguy cơ nêu trên và báo cáo khó thở hoặc mệt mỏi mới xuất hiện hoặc tiến triển, HFpEF nên được xem là một chẩn đoán phân biệt chủ động — chứ không phải là chẩn đoán loại trừ chỉ đạt được sau khi đã loại trừ mọi nguyên nhân khác.",
+  screening_title: "Sàng lọc HFpEF",
+  screening_intro: "Khi nghi ngờ HFpEF trên lâm sàng, một điểm số sàng lọc đã được xác thực có thể giúp định lượng mức độ nghi ngờ đó bằng cách sử dụng dữ liệu đã có sẵn tại tuyến chăm sóc ban đầu — mà không cần chuyển tuyến hay xét nghiệm chuyên khoa chỉ để có được xác suất ban đầu.",
+  screening_aba_title: "Điểm số Sàng lọc HFpEF-ABA",
+  screening_aba_body: "Điểm số HFpEF-ABA, được phát triển bởi Reddy và cộng sự, công bố trên Nature Medicine (2024), được xây dựng chuyên biệt để sàng lọc HFpEF chỉ bằng Tuổi, BMI, và tiền sử Rung nhĩ — không cần siêu âm tim. Điều này giúp việc tính toán trở nên thực tế ngay trong buổi khám thông thường, và đây cũng là điểm số được sử dụng trong máy tính bên dưới. Điểm số này đã được nhấn mạnh như một công cụ phù hợp cho sàng lọc tại chăm sóc ban đầu và hồ sơ bệnh án điện tử trong các hướng dẫn đồng thuận chuyên gia gần đây.",
+  screening_other_title: "Các Công cụ Sàng lọc & Chẩn đoán Khác Có Thể Gặp",
+  screening_other_body: "Các đồng nghiệp chuyên khoa tim mạch có thể tham khảo các điểm số đã được xác thực khác khi tinh chỉnh chẩn đoán, bao gồm H2FPEF và thuật toán HFA-PEFF, cả hai đều yêu cầu các phép đo siêu âm tim (như E/e′ và áp lực tâm thu động mạch phổi), cũng như các công cụ mới hơn như điểm số BREATH2, sử dụng các xét nghiệm, điện tâm đồ, và X-quang ngực thường quy. Những công cụ này không được tích hợp trong máy tính của công cụ này, nhưng việc nhận biết tên gọi của chúng có thể hữu ích khi xem xét thư chuyển tuyến hoặc báo cáo của chuyên khoa.",
   s4_title: "Hướng dẫn & Tài liệu tham khảo cho Bác sĩ Chăm sóc Ban đầu",
   s4_intro: "Công cụ này được xây dựng dựa trên các tài liệu tham khảo khu vực và quốc tế sau đây. Các đội ngũ chăm sóc ban đầu được khuyến khích tham khảo trực tiếp các tài liệu này để biết đầy đủ chi tiết lâm sàng.",
   s4_items: [
     {title:"Tuyên bố Đồng thuận APSC về Suy tim Mạn tính (2023)", body:"Hội Tim mạch Châu Á - Thái Bình Dương (APSC) đã xây dựng các khuyến nghị đồng thuận đặc thù cho khu vực về chẩn đoán và quản lý suy tim trên toàn bộ phổ phân suất tống máu, ghi nhận rằng bệnh nhân Châu Á - Thái Bình Dương có đặc điểm dịch tễ học khác với các nhóm dân số phương Tây mà hầu hết các hướng dẫn dựa vào.", url:"https://www.japscjournal.com/articles/asian-pacific-society-cardiology-consensus-statements-diagnosis-and-management-chronic"},
     {title:"Hướng dẫn Suy tim và Tài liệu cho Bác sĩ Gia đình tại Úc", body:"Hướng dẫn của Quỹ Tim mạch Quốc gia Úc và Hội Tim mạch Úc và New Zealand, cùng với tài liệu 'Recognising Heart Failure' dành cho bác sĩ gia đình của hearts4heart, cung cấp hướng dẫn thực tiễn, tập trung vào chăm sóc ban đầu để nhận biết và quản lý suy tim tại Úc.", url:"https://hearts4heart.org.au/wp-content/uploads/2022/05/H4H-Recognising-Heart-Failure-GP-Resource.pdf"},
-    {title:"Quy trình Suy tim có cấu trúc tại Chăm sóc Ban đầu", body:"Các công cụ như tài liệu về suy tim của Centre for Effective Practice minh họa cách các quy trình có cấu trúc, có thể tích hợp vào hệ thống bệnh án điện tử — bao gồm đánh giá, chẩn đoán, chuyển tuyến và theo dõi — có thể được xây dựng trực tiếp vào quy trình làm việc của chăm sóc ban đầu, cải thiện mức độ áp dụng thực tế so với tài liệu tham khảo độc lập.", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"},
-    {title:"Công cụ này phù hợp như thế nào", body:"Công cụ này sử dụng điểm số HFpEF-ABA — đã được xác thực để sàng lọc HFpEF chỉ bằng tuổi, BMI và tình trạng rung nhĩ, không cần siêu âm tim — vì vậy có thể sử dụng trực tiếp trong buổi tư vấn chăm sóc ban đầu. Kết quả được kèm theo bước tiếp theo được đề xuất: theo dõi, chỉ định xét nghiệm NT-proBNP, hoặc chuyển đến chuyên khoa tim mạch."}
+    {title:"Quy trình Suy tim có cấu trúc tại Chăm sóc Ban đầu", body:"Các công cụ như tài liệu về suy tim của Centre for Effective Practice minh họa cách các quy trình có cấu trúc, có thể tích hợp vào hệ thống bệnh án điện tử — bao gồm đánh giá, chẩn đoán, chuyển tuyến và theo dõi — có thể được xây dựng trực tiếp vào quy trình làm việc của chăm sóc ban đầu, cải thiện mức độ áp dụng thực tế so với tài liệu tham khảo độc lập.", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"}
   ],
   calc_title: "Máy tính Sàng lọc HFpEF-ABA",
   calc_subtitle: "Không cần siêu âm tim · Reddy YNV và cộng sự, Nat Med 2024;30(8):2258–64",
@@ -482,7 +514,8 @@ vi: {
   symptom_checker_intro: "Chọn tất cả các triệu chứng phù hợp. Đây chỉ là gợi ý nhanh, không phải đánh giá có tính điểm.",
   symptom_prompt_positive: "Mô hình triệu chứng này phù hợp với khả năng mắc HFpEF, đặc biệt nếu có kèm theo các yếu tố nguy cơ. Hãy cân nhắc sàng lọc bệnh nhân này ngay.",
   symptom_prompt_negative: "Không có triệu chứng chính nào được chọn. Nếu vẫn còn nghi ngờ lâm sàng vì lý do khác, bạn vẫn có thể tiếp tục sàng lọc.",
-  footer_disclaimer: "Chỉ sử dụng cho mục đích giáo dục và hỗ trợ quyết định lâm sàng. Không thay thế cho đánh giá lâm sàng hoặc các hướng dẫn khu vực hiện hành. Vui lòng xác minh tất cả dữ liệu đầu vào và kết quả trước khi sử dụng trong chăm sóc bệnh nhân."
+  disclaimer_label: "Miễn trừ trách nhiệm:",
+  footer_disclaimer: "Công cụ này được phát triển bởi đội ngũ Y khoa (Medical Affairs) của Boehringer Ingelheim. Máy tính sàng lọc này dựa trên điểm số HFpEF-ABA, một công cụ sàng lọc đã qua bình duyệt và được xác thực, và nội dung giáo dục dựa trên các tài liệu tham khảo công khai có uy tín cao cùng các tuyên bố đồng thuận hướng dẫn khu vực. Tài liệu này tham khảo các hướng dẫn và điểm số sàng lọc công khai; đây không phải là quan hệ đối tác chính thức với các tổ chức được trích dẫn. Công cụ này không thay thế cho đánh giá lâm sàng hoặc các hướng dẫn khu vực hiện hành. Vui lòng xác minh tất cả dữ liệu đầu vào và kết quả trước khi sử dụng trong chăm sóc bệnh nhân."
 },
 zh: {
   banner: "韩语、泰语、越南语、中文和马来语翻译由AI初步生成，尚待当地临床团队审核。英文版为已验证的参考版本。",
@@ -505,13 +538,18 @@ zh: {
   s3_risk: ["年龄超过60–65岁","高血压","心房颤动","肥胖","2型糖尿病","冠状动脉疾病或既往心肌梗死"],
   s3_missed_title: "为何容易被漏诊",
   s3_missed_body: "由于这些症状与正常衰老、体能下降、肥胖或慢性阻塞性肺病（COPD）高度重叠，HFpEF很容易被归因于其他原因。对基层医疗而言，最有用的思路转变是：对于具有上述多项危险因素、且出现新发或进行性呼吸困难或乏力的患者，HFpEF应被视为一项需要主动考虑的鉴别诊断——而非在排除所有其他病因后才得出的排除性诊断。",
+  screening_title: "HFpEF 筛查",
+  screening_intro: "当临床怀疑HFpEF时，经过验证的筛查评分可以利用基层医疗中已有的数据来量化这种怀疑程度——无需转诊或进行专科检查即可获得初步概率评估。",
+  screening_aba_title: "HFpEF-ABA 筛查评分",
+  screening_aba_body: "HFpEF-ABA评分由Reddy等人开发，发表于《Nature Medicine》（2024年），专门设计用于仅通过年龄、BMI和心房颤动病史来筛查HFpEF——无需超声心动图。这使得在常规问诊过程中即可进行计算，也是下方计算器所采用的评分。近期的专家共识指南强调，该工具非常适合用于基层医疗及电子病历系统的筛查。",
+  screening_other_title: "您可能会遇到的其他筛查与诊断工具",
+  screening_other_body: "心脏科同事在明确诊断时可能会参考其他经过验证的评分，包括H2FPEF和HFA-PEFF算法，两者均需要超声心动图测量数据（如E/e′和肺动脉收缩压），以及较新的工具，如BREATH2评分，该评分使用常规可获得的化验、心电图和胸部X光结果。这些工具未包含在本计算器中，但了解这些名称有助于您在查看专科转诊信或报告时进行参考。",
   s4_title: "面向基层医疗医生的指南与资源",
   s4_intro: "本工具参考了以下区域及国际资源。建议基层医疗团队直接查阅这些资源以获取完整的临床细节。",
   s4_items: [
     {title:"APSC 慢性心力衰竭共识声明（2023年）", body:"亚太心脏病学会（APSC）制定了针对本地区的共识建议，涵盖全射血分数范围内心衰的诊断与管理，认识到亚太患者在流行病学特征上与大多数指南所依据的西方人群存在差异。", url:"https://www.japscjournal.com/articles/asian-pacific-society-cardiology-consensus-statements-diagnosis-and-management-chronic"},
     {title:"澳大利亚心衰指南与全科医生资源", body:"澳大利亚国家心脏基金会与澳新心脏学会的指南，以及hearts4heart发布的《识别心力衰竭》全科医生资源，为在澳大利亚背景下识别和管理心衰提供了以基层医疗为重点的实用指导。", url:"https://hearts4heart.org.au/wp-content/uploads/2022/05/H4H-Recognising-Heart-Failure-GP-Resource.pdf"},
-    {title:"结构化基层医疗心衰路径", body:"诸如Centre for Effective Practice心衰资源等工具展示了涵盖评估、诊断、转诊和监测的结构化、可嵌入电子病历系统的路径，如何能够直接融入基层医疗工作流程，相比独立的参考文档能更有效地提升实际应用率。", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"},
-    {title:"本工具的定位", body:"本工具采用HFpEF-ABA评分——该评分仅通过年龄、BMI和心房颤动病史即可筛查HFpEF，无需超声心动图，因此可在基层医疗问诊中直接使用。评估结果将附带建议的下一步措施：观察随访、检测NT-proBNP，或转诊至心脏科。"}
+    {title:"结构化基层医疗心衰路径", body:"诸如Centre for Effective Practice心衰资源等工具展示了涵盖评估、诊断、转诊和监测的结构化、可嵌入电子病历系统的路径，如何能够直接融入基层医疗工作流程，相比独立的参考文档能更有效地提升实际应用率。", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"}
   ],
   calc_title: "HFpEF-ABA 筛查计算器",
   calc_subtitle: "无需超声心动图 · Reddy YNV 等，Nat Med 2024;30(8):2258–64",
@@ -538,7 +576,8 @@ zh: {
   symptom_checker_intro: "请选择所有符合的症状。这只是一个快速提示，并非评分评估。",
   symptom_prompt_positive: "该症状模式与HFpEF的可能性相符，尤其是同时存在危险因素时。请考虑立即对该患者进行筛查。",
   symptom_prompt_negative: "未选择主要症状。如果因其他原因仍存在临床怀疑，您仍可继续进行筛查。",
-  footer_disclaimer: "仅供教育及临床决策支持使用，不能替代临床判断或当前地区指南。在用于患者诊疗前，请核实所有输入数据及结果。"
+  disclaimer_label: "免责声明：",
+  footer_disclaimer: "本工具由勃林格殷格翰（Boehringer Ingelheim）医学事务团队开发。该筛查计算器基于HFpEF-ABA评分——一项经同行评审、已验证的筛查工具，教育内容则参考了高度权威的公开资料及区域指南共识声明。本资源参考了公开发表的指南及筛查评分，并非与所引用机构存在正式合作关系。本工具不能替代临床判断或当前地区指南。在用于患者诊疗前，请核实所有输入数据及结果。"
 },
 ms: {
   banner: "Terjemahan Korea, Thai, Vietnam, Cina, dan Bahasa Malaysia disediakan sebagai draf oleh AI dan masih menunggu semakan oleh pasukan klinikal tempatan. Versi Bahasa Inggeris adalah versi rujukan yang telah disahkan.",
@@ -561,13 +600,18 @@ ms: {
   s3_risk: ["Umur melebihi 60–65 tahun","Hipertensi","Fibrilasi atrium","Obesiti","Diabetes jenis 2","Penyakit arteri koronari atau infarksi miokardium terdahulu"],
   s3_missed_title: "Mengapa ia terlepas pandang",
   s3_missed_body: "Kerana gejala-gejala ini bertindih dengan ketara dengan penuaan normal, penurunan keupayaan fizikal, obesiti, atau COPD, HFpEF mudah dijelaskan sebagai sebab lain. Perubahan paling berguna untuk penjagaan primer ialah: pada pesakit dengan beberapa faktor risiko di atas yang melaporkan sesak nafas atau keletihan yang baharu atau semakin teruk, HFpEF harus menjadi diagnosis pembezaan yang aktif — bukan diagnosis pengecualian yang hanya dicapai selepas semua sebab lain disingkirkan.",
+  screening_title: "Saringan HFpEF",
+  screening_intro: "Apabila HFpEF disyaki secara klinikal, skor saringan yang disahkan boleh membantu mengukur kecurigaan tersebut menggunakan data yang sudah tersedia dalam penjagaan primer — tanpa memerlukan rujukan atau ujian pakar hanya untuk mendapatkan kebarangkalian awal.",
+  screening_aba_title: "Skor Saringan HFpEF-ABA",
+  screening_aba_body: "Skor HFpEF-ABA, dibangunkan oleh Reddy et al. dan diterbitkan dalam Nature Medicine (2024), dibina khusus untuk menyaring HFpEF menggunakan hanya Umur, BMI, dan sejarah Fibrilasi Atrium — tiada ekokardiogram diperlukan. Ini menjadikannya praktikal untuk dikira semasa konsultasi biasa, dan ia adalah skor yang digunakan dalam kalkulator di bawah. Ia telah ditonjolkan sebagai alat yang sesuai untuk saringan penjagaan primer dan rekod perubatan elektronik dalam garis panduan konsensus pakar terkini.",
+  screening_other_title: "Alat Saringan & Diagnostik Lain yang Mungkin Anda Temui",
+  screening_other_body: "Rakan sekerja kardiologi mungkin merujuk skor lain yang disahkan semasa memperhalusi diagnosis, termasuk H2FPEF dan algoritma HFA-PEFF, yang kedua-duanya memerlukan pengukuran ekokardiografi (seperti E/e′ dan tekanan sistolik arteri pulmonari), serta alat yang lebih baharu seperti skor BREATH2, yang menggunakan ujian makmal, ECG, dan penemuan X-ray dada yang tersedia secara rutin. Alat-alat ini tidak disertakan dalam kalkulator alat ini, tetapi mengenali nama-nama ini mungkin berguna apabila menyemak surat rujukan atau laporan pakar.",
   s4_title: "Garis Panduan & Sumber untuk Pengamal Perubatan Primer",
   s4_intro: "Alat ini dibina berdasarkan sumber serantau dan antarabangsa berikut. Pasukan penjagaan primer digalakkan merujuk sumber ini secara langsung untuk butiran klinikal yang lengkap.",
   s4_items: [
     {title:"Kenyataan Konsensus APSC mengenai Kegagalan Jantung Kronik (2023)", body:"Persatuan Kardiologi Asia Pasifik (APSC) membangunkan cadangan konsensus khusus rantau untuk mendiagnosis dan menguruskan HF merentasi spektrum pecahan pengeluaran, mengiktiraf bahawa pesakit Asia-Pasifik berbeza dari segi epidemiologi berbanding kohort Barat yang menjadi asas kebanyakan garis panduan.", url:"https://www.japscjournal.com/articles/asian-pacific-society-cardiology-consensus-statements-diagnosis-and-management-chronic"},
     {title:"Garis Panduan Kegagalan Jantung Australia & Sumber Doktor Am", body:"Garis panduan National Heart Foundation of Australia dan Cardiac Society of Australia and New Zealand, bersama-sama sumber 'Recognising Heart Failure' untuk doktor am oleh hearts4heart, menyediakan panduan praktikal yang berfokuskan penjagaan primer untuk mengenal pasti dan menguruskan kegagalan jantung dalam konteks Australia.", url:"https://hearts4heart.org.au/wp-content/uploads/2022/05/H4H-Recognising-Heart-Failure-GP-Resource.pdf"},
-    {title:"Laluan HF Penjagaan Primer Berstruktur", body:"Alat seperti sumber Kegagalan Jantung daripada Centre for Effective Practice menggambarkan bagaimana laluan berstruktur yang boleh dibenamkan dalam EMR — merangkumi penilaian, diagnosis, rujukan, dan pemantauan — boleh dibina terus ke dalam aliran kerja penjagaan primer, meningkatkan penggunaan dunia sebenar berbanding dokumen rujukan berasingan.", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"},
-    {title:"Bagaimana alat ini sesuai", body:"Alat ini menggunakan skor HFpEF-ABA — disahkan untuk menyaring HFpEF menggunakan hanya umur, BMI, dan status fibrilasi atrium, tanpa memerlukan ekokardiografi — supaya ia boleh digunakan terus semasa konsultasi penjagaan primer. Keputusan disertakan dengan langkah seterusnya yang dicadangkan: pantau, tempah NT-proBNP, atau rujuk kepada kardiologi."}
+    {title:"Laluan HF Penjagaan Primer Berstruktur", body:"Alat seperti sumber Kegagalan Jantung daripada Centre for Effective Practice menggambarkan bagaimana laluan berstruktur yang boleh dibenamkan dalam EMR — merangkumi penilaian, diagnosis, rujukan, dan pemantauan — boleh dibina terus ke dalam aliran kerja penjagaan primer, meningkatkan penggunaan dunia sebenar berbanding dokumen rujukan berasingan.", url:"https://cep.health/clinical-products/managing-patients-with-heart-failure/"}
   ],
   calc_title: "Kalkulator Saringan HFpEF-ABA",
   calc_subtitle: "Tiada ekokardiogram diperlukan · Reddy YNV et al., Nat Med 2024;30(8):2258–64",
@@ -594,7 +638,8 @@ ms: {
   symptom_checker_intro: "Pilih semua yang berkenaan. Ini adalah gesaan pantas, bukan penilaian berskor.",
   symptom_prompt_positive: "Corak gejala ini konsisten dengan kemungkinan HFpEF, terutamanya jika faktor risiko turut hadir. Pertimbangkan untuk menyaring pesakit ini sekarang.",
   symptom_prompt_negative: "Tiada gejala utama dipilih. Jika kecurigaan klinikal berterusan atas sebab lain, anda masih boleh meneruskan ke saringan.",
-  footer_disclaimer: "Untuk kegunaan pendidikan dan sokongan keputusan klinikal sahaja. Bukan pengganti pertimbangan klinikal atau garis panduan serantau semasa. Sahkan semua input dan output sebelum digunakan dalam penjagaan pesakit."
+  disclaimer_label: "Penafian:",
+  footer_disclaimer: "Alat ini dibangunkan oleh pasukan Hal Ehwal Perubatan (Medical Affairs) Boehringer Ingelheim. Kalkulator saringan ini berdasarkan skor HFpEF-ABA, alat saringan yang disemak oleh rakan sebaya dan disahkan, dan kandungan pendidikan berdasarkan rujukan awam yang sangat bereputasi serta kenyataan konsensus garis panduan serantau. Sumber ini merujuk garis panduan dan skor saringan yang tersedia secara umum; ini bukan perkongsian rasmi dengan organisasi yang dirujuk. Alat ini bukan pengganti pertimbangan klinikal atau garis panduan serantau semasa. Sahkan semua input dan output sebelum digunakan dalam penjagaan pesakit."
 }
 };
 
@@ -641,7 +686,7 @@ function renderLanguage(lang){
     s4.appendChild(div);
   });
 
-  $('footerDisclaimer').innerHTML = '<b>' + (lang==='en' ? 'Note:' : '') + '</b> ' + t.footer_disclaimer;
+  $('footerDisclaimer').innerHTML = '<b>' + t.disclaimer_label + '</b> ' + t.footer_disclaimer;
 
   renderSymptomChecklist(t);
 
