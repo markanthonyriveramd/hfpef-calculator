@@ -66,6 +66,11 @@
   }
   .cta-btn:hover{ background:var(--deep); }
 
+  .symptom-item{ display:flex; align-items:flex-start; gap:10px; padding:11px 0; border-bottom:1px solid var(--line); }
+  .symptom-item:last-child{ border-bottom:none; }
+  .symptom-item input[type=checkbox]{ width:19px; height:19px; margin-top:1px; accent-color:var(--brand); flex:none; }
+  .symptom-item label{ font-size:14px; line-height:1.5; color:var(--ink); cursor:pointer; }
+
   .grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:18px; align-items:start; }
   @media (max-width:800px){ .grid{ grid-template-columns:1fr; } }
 
@@ -140,6 +145,7 @@
 
 <nav class="tabs">
   <button data-tab="learn" class="active" data-i18n="nav_learn"></button>
+  <button data-tab="symptoms" data-i18n="nav_symptoms"></button>
   <button data-tab="calc" data-i18n="nav_calc"></button>
 </nav>
 
@@ -175,6 +181,20 @@
 
   <div class="cta-row">
     <button class="cta-btn" id="gotoCalcBtn" data-i18n="cta_calc"></button>
+  </div>
+</section>
+
+<section id="panel-symptoms" class="panel" style="display:none;">
+  <div class="edu-card">
+    <h2 data-i18n="symptom_checker_title"></h2>
+    <p data-i18n="symptom_checker_intro"></p>
+    <div id="symptomCheckboxList" style="margin-top:14px;"></div>
+  </div>
+  <div class="edu-card" id="symptomPromptCard">
+    <div id="symptomPromptBox" style="font-size:14px; line-height:1.7; padding:14px 16px; border-radius:10px; border-left:4px solid var(--muted); background:#F5F8F6;"></div>
+  </div>
+  <div class="cta-row">
+    <button class="cta-btn" id="gotoCalcFromSymptomsBtn" data-i18n="cta_calc2"></button>
   </div>
 </section>
 
@@ -246,7 +266,9 @@ en: {
   app_subtitle: "For Primary Care Practitioners · Medical Affairs Education & Decision Support",
   nav_learn: "Learn",
   nav_calc: "Screen My Patient",
-  cta_calc: "Continue to the Screening Calculator →",
+  nav_symptoms: "Symptom Checker",
+  cta_calc: "Continue to Symptom Checker →",
+  cta_calc2: "Continue to the Screening Calculator →",
   s1_title: "What is Heart Failure?",
   s1_body: "Heart failure (HF) is a clinical syndrome, not a single disease. It occurs when the heart cannot fill with blood or pump blood as well as it should, producing a characteristic pattern of symptoms — breathlessness, fatigue, exercise intolerance — and signs such as fluid retention. HF is classified by left ventricular ejection fraction (LVEF): HFrEF (reduced, LVEF ≤40%), HFmrEF (mildly reduced, LVEF 41–49%), and HFpEF (preserved, LVEF ≥50%). Despite having 'normal' pump function on echocardiogram, patients with HFpEF carry a hospitalization and mortality burden comparable to those with HFrEF.",
   s2_title: "Why HFpEF Is Critical in Asia-Pacific",
@@ -288,6 +310,10 @@ en: {
   ntprobnp_low: "NT-proBNP below threshold: HFpEF unlikely. Continue monitoring; reassess if symptoms change.",
   ntprobnp_high: "NT-proBNP at or above threshold: refer to cardiologist for further evaluation (echocardiography recommended).",
   threshold_note: "Probability bands (Low <20%, Intermediate 20–70%, High >70%) and the NT-proBNP threshold (125 pg/mL, non-acute setting) are a pragmatic triage framework; the original HFpEF-ABA publication does not itself specify validated categorical cutoffs. This tool supports, and does not replace, clinical judgment.",
+  symptom_checker_title: "Does this patient have any of these symptoms?",
+  symptom_checker_intro: "Select all that apply. This is a quick prompt, not a scored assessment.",
+  symptom_prompt_positive: "This symptom pattern is consistent with possible HFpEF, especially if risk factors are also present. Consider screening this patient now.",
+  symptom_prompt_negative: "No major symptoms selected. If clinical suspicion remains for another reason, you can still proceed to screening.",
   footer_disclaimer: "For educational and clinical decision-support use only. Not a substitute for clinical judgement or current regional guidelines. Verify all inputs and outputs before use in patient care."
 },
 ko: {
@@ -296,7 +322,9 @@ ko: {
   app_subtitle: "1차 진료의를 위한 · 의학부 교육 및 의사결정 지원",
   nav_learn: "학습",
   nav_calc: "환자 선별검사",
-  cta_calc: "선별 계산기로 이동 →",
+  nav_symptoms: "증상 체크리스트",
+  cta_calc: "증상 체크리스트로 이동 →",
+  cta_calc2: "선별 계산기로 이동 →",
   s1_title: "심부전이란 무엇인가?",
   s1_body: "심부전(HF)은 단일 질환이 아니라 임상 증후군입니다. 심장이 혈액으로 충분히 채워지지 않거나 정상적으로 혈액을 박출하지 못할 때 발생하며, 호흡곤란, 피로, 운동 능력 저하와 같은 특징적인 증상과 체액 저류와 같은 징후를 나타냅니다. 심부전은 좌심실 박출률(LVEF)에 따라 분류됩니다: HFrEF(박출률 감소형, LVEF ≤40%), HFmrEF(경도 감소형, LVEF 41–49%), HFpEF(박출률 보존형, LVEF ≥50%). 심초음파에서 '정상' 박출 기능을 보이더라도, HFpEF 환자는 HFrEF 환자와 유사한 수준의 입원 및 사망 부담을 안고 있습니다.",
   s2_title: "아시아태평양 지역에서 HFpEF가 중요한 이유",
@@ -338,6 +366,10 @@ ko: {
   ntprobnp_low: "NT-proBNP가 기준치 미만: HFpEF 가능성이 낮습니다. 관찰을 지속하고 증상 변화 시 재평가하십시오.",
   ntprobnp_high: "NT-proBNP가 기준치 이상: 추가 평가를 위해 심장내과로 의뢰하십시오 (심초음파 권장).",
   threshold_note: "확률 구간(낮음 <20%, 중간 20–70%, 높음 >70%)과 NT-proBNP 기준치(비급성 상황에서 125 pg/mL)는 실용적인 중증도 분류 체계이며, 원 HFpEF-ABA 논문 자체에서 검증된 범주형 절단값을 명시하지는 않았습니다. 이 도구는 임상적 판단을 보조하는 것이며, 이를 대체하지 않습니다.",
+  symptom_checker_title: "이 환자에게 다음 증상이 있습니까?",
+  symptom_checker_intro: "해당하는 항목을 모두 선택하십시오. 이는 간단한 안내이며 점수화된 평가가 아닙니다.",
+  symptom_prompt_positive: "이 증상 패턴은 위험 요인이 함께 있는 경우 특히 HFpEF 가능성과 일치합니다. 지금 이 환자를 선별검사하는 것을 고려하십시오.",
+  symptom_prompt_negative: "주요 증상이 선택되지 않았습니다. 다른 이유로 임상적 의심이 남아있다면 선별검사를 계속 진행할 수 있습니다.",
   footer_disclaimer: "교육 및 임상 의사결정 지원 목적으로만 사용하십시오. 임상적 판단이나 현행 지역 지침을 대체하지 않습니다. 환자 진료에 사용하기 전에 모든 입력값과 결과를 확인하십시오."
 },
 th: {
@@ -346,7 +378,9 @@ th: {
   app_subtitle: "สำหรับแพทย์เวชปฏิบัติทั่วไป · การศึกษาและสนับสนุนการตัดสินใจทางการแพทย์",
   nav_learn: "เรียนรู้",
   nav_calc: "คัดกรองผู้ป่วย",
-  cta_calc: "ไปยังเครื่องคำนวณคัดกรอง →",
+  nav_symptoms: "ตรวจสอบอาการ",
+  cta_calc: "ไปยังการตรวจสอบอาการ →",
+  cta_calc2: "ไปยังเครื่องคำนวณคัดกรอง →",
   s1_title: "ภาวะหัวใจล้มเหลวคืออะไร?",
   s1_body: "ภาวะหัวใจล้มเหลว (HF) เป็นกลุ่มอาการทางคลินิก ไม่ใช่โรคเดียว เกิดขึ้นเมื่อหัวใจไม่สามารถรับเลือดเข้ามาเติมหรือสูบฉีดเลือดออกไปได้ตามปกติ ทำให้เกิดรูปแบบอาการที่เป็นลักษณะเฉพาะ ได้แก่ หายใจลำบาก อ่อนเพลีย ทนต่อการออกกำลังกายได้น้อยลง และอาการแสดง เช่น การคั่งของสารน้ำในร่างกาย ภาวะหัวใจล้มเหลวแบ่งตามค่าการบีบตัวของหัวใจห้องล่างซ้าย (LVEF): HFrEF (ค่าการบีบตัวลดลง LVEF ≤40%), HFmrEF (ค่าการบีบตัวลดลงเล็กน้อย LVEF 41–49%) และ HFpEF (ค่าการบีบตัวปกติ LVEF ≥50%) แม้ว่าผลอัลตราซาวด์หัวใจจะแสดงการทำงานของหัวใจ 'ปกติ' แต่ผู้ป่วย HFpEF มีความเสี่ยงต่อการนอนโรงพยาบาลและการเสียชีวิตใกล้เคียงกับผู้ป่วย HFrEF",
   s2_title: "เหตุใด HFpEF จึงมีความสำคัญในภูมิภาคเอเชียแปซิฟิก",
@@ -388,6 +422,10 @@ th: {
   ntprobnp_low: "NT-proBNP ต่ำกว่าเกณฑ์: โอกาสเป็น HFpEF ต่ำ ควรติดตามอาการต่อเนื่องและประเมินซ้ำหากอาการเปลี่ยนแปลง",
   ntprobnp_high: "NT-proBNP เท่ากับหรือสูงกว่าเกณฑ์: ส่งต่อไปยังแพทย์โรคหัวใจเพื่อประเมินเพิ่มเติม (แนะนำให้ตรวจอัลตราซาวด์หัวใจ)",
   threshold_note: "ช่วงความน่าจะเป็น (ต่ำ <20%, ปานกลาง 20–70%, สูง >70%) และเกณฑ์ NT-proBNP (125 pg/mL ในสถานการณ์ที่ไม่เฉียบพลัน) เป็นกรอบการคัดแยกเชิงปฏิบัติ งานตีพิมพ์ต้นฉบับของ HFpEF-ABA ไม่ได้ระบุค่าตัดแบ่งกลุ่มที่ผ่านการตรวจสอบความถูกต้องไว้อย่างชัดเจน เครื่องมือนี้เป็นเพียงตัวช่วยสนับสนุนการตัดสินใจทางคลินิก ไม่ใช่สิ่งทดแทนดุลยพินิจทางคลินิก",
+  symptom_checker_title: "ผู้ป่วยรายนี้มีอาการเหล่านี้หรือไม่?",
+  symptom_checker_intro: "เลือกอาการทั้งหมดที่ตรงกับผู้ป่วย นี่เป็นเพียงข้อเสนอแนะเบื้องต้น ไม่ใช่การประเมินแบบให้คะแนน",
+  symptom_prompt_positive: "รูปแบบอาการนี้สอดคล้องกับความเป็นไปได้ของ HFpEF โดยเฉพาะหากมีปัจจัยเสี่ยงร่วมด้วย ควรพิจารณาคัดกรองผู้ป่วยรายนี้ในขณะนี้",
+  symptom_prompt_negative: "ไม่มีการเลือกอาการสำคัญ หากยังคงมีข้อสงสัยทางคลินิกด้วยเหตุผลอื่น ท่านยังสามารถดำเนินการคัดกรองต่อได้",
   footer_disclaimer: "สำหรับวัตถุประสงค์ทางการศึกษาและสนับสนุนการตัดสินใจทางคลินิกเท่านั้น ไม่ใช่สิ่งทดแทนดุลยพินิจทางคลินิกหรือแนวทางระดับภูมิภาคฉบับปัจจุบัน โปรดตรวจสอบข้อมูลนำเข้าและผลลัพธ์ทั้งหมดก่อนนำไปใช้ในการดูแลผู้ป่วย"
 },
 vi: {
@@ -396,7 +434,9 @@ vi: {
   app_subtitle: "Dành cho Bác sĩ Chăm sóc Ban đầu · Giáo dục & Hỗ trợ Quyết định của Bộ phận Y khoa",
   nav_learn: "Tìm hiểu",
   nav_calc: "Sàng lọc bệnh nhân",
-  cta_calc: "Tiếp tục đến Máy tính Sàng lọc →",
+  nav_symptoms: "Kiểm Tra Triệu Chứng",
+  cta_calc: "Tiếp tục đến Kiểm Tra Triệu Chứng →",
+  cta_calc2: "Tiếp tục đến Máy tính Sàng lọc →",
   s1_title: "Suy tim là gì?",
   s1_body: "Suy tim (HF) là một hội chứng lâm sàng, không phải một bệnh đơn lẻ. Suy tim xảy ra khi tim không thể đổ đầy máu hoặc bơm máu như bình thường, gây ra một loạt triệu chứng đặc trưng — khó thở, mệt mỏi, giảm khả năng gắng sức — và các dấu hiệu như ứ dịch. Suy tim được phân loại theo phân suất tống máu thất trái (LVEF): HFrEF (giảm, LVEF ≤40%), HFmrEF (giảm nhẹ, LVEF 41–49%), và HFpEF (bảo tồn, LVEF ≥50%). Mặc dù có chức năng bơm máu 'bình thường' trên siêu âm tim, bệnh nhân HFpEF vẫn có gánh nặng nhập viện và tử vong tương đương với bệnh nhân HFrEF.",
   s2_title: "Vì sao HFpEF quan trọng ở khu vực Châu Á - Thái Bình Dương",
@@ -438,6 +478,10 @@ vi: {
   ntprobnp_low: "NT-proBNP dưới ngưỡng: khả năng HFpEF thấp. Tiếp tục theo dõi; đánh giá lại nếu triệu chứng thay đổi.",
   ntprobnp_high: "NT-proBNP bằng hoặc trên ngưỡng: chuyển đến bác sĩ tim mạch để đánh giá thêm (khuyến nghị siêu âm tim).",
   threshold_note: "Các mức xác suất (Thấp <20%, Trung bình 20–70%, Cao >70%) và ngưỡng NT-proBNP (125 pg/mL, trong bối cảnh không cấp tính) là một khung phân loại thực tiễn; bài báo gốc về HFpEF-ABA không tự quy định các ngưỡng phân loại đã được xác thực. Công cụ này hỗ trợ, chứ không thay thế, đánh giá lâm sàng.",
+  symptom_checker_title: "Bệnh nhân này có bất kỳ triệu chứng nào sau đây không?",
+  symptom_checker_intro: "Chọn tất cả các triệu chứng phù hợp. Đây chỉ là gợi ý nhanh, không phải đánh giá có tính điểm.",
+  symptom_prompt_positive: "Mô hình triệu chứng này phù hợp với khả năng mắc HFpEF, đặc biệt nếu có kèm theo các yếu tố nguy cơ. Hãy cân nhắc sàng lọc bệnh nhân này ngay.",
+  symptom_prompt_negative: "Không có triệu chứng chính nào được chọn. Nếu vẫn còn nghi ngờ lâm sàng vì lý do khác, bạn vẫn có thể tiếp tục sàng lọc.",
   footer_disclaimer: "Chỉ sử dụng cho mục đích giáo dục và hỗ trợ quyết định lâm sàng. Không thay thế cho đánh giá lâm sàng hoặc các hướng dẫn khu vực hiện hành. Vui lòng xác minh tất cả dữ liệu đầu vào và kết quả trước khi sử dụng trong chăm sóc bệnh nhân."
 },
 zh: {
@@ -446,7 +490,9 @@ zh: {
   app_subtitle: "面向基层医疗医生 · 医学事务教育与决策支持",
   nav_learn: "了解",
   nav_calc: "为患者筛查",
-  cta_calc: "前往筛查计算器 →",
+  nav_symptoms: "症状核查",
+  cta_calc: "前往症状核查 →",
+  cta_calc2: "前往筛查计算器 →",
   s1_title: "什么是心力衰竭？",
   s1_body: "心力衰竭（HF）是一种临床综合征，而非单一疾病。当心脏无法正常充盈血液或泵出血液时即会发生，表现为一组特征性症状——呼吸困难、乏力、运动耐量下降——以及体液潴留等体征。心衰根据左心室射血分数（LVEF）分类：HFrEF（射血分数降低，LVEF ≤40%）、HFmrEF（射血分数轻度降低，LVEF 41–49%）以及HFpEF（射血分数保留，LVEF ≥50%）。尽管超声心动图显示“正常”的泵血功能，HFpEF患者的住院和死亡负担与HFrEF患者相当。",
   s2_title: "为何HFpEF在亚太地区至关重要",
@@ -488,6 +534,10 @@ zh: {
   ntprobnp_low: "NT-proBNP低于阈值：HFpEF可能性低。请继续随访观察，若症状变化则重新评估。",
   ntprobnp_high: "NT-proBNP达到或高于阈值：转诊至心脏科医生进行进一步评估（建议行超声心动图检查）。",
   threshold_note: "概率区间（低 <20%，中 20–70%，高 >70%）及NT-proBNP阈值（非急性情况下为125 pg/mL）是一种实用的分诊框架；HFpEF-ABA原始文献本身并未规定经过验证的分类切点。本工具用于辅助而非替代临床判断。",
+  symptom_checker_title: "该患者是否有以下任何症状？",
+  symptom_checker_intro: "请选择所有符合的症状。这只是一个快速提示，并非评分评估。",
+  symptom_prompt_positive: "该症状模式与HFpEF的可能性相符，尤其是同时存在危险因素时。请考虑立即对该患者进行筛查。",
+  symptom_prompt_negative: "未选择主要症状。如果因其他原因仍存在临床怀疑，您仍可继续进行筛查。",
   footer_disclaimer: "仅供教育及临床决策支持使用，不能替代临床判断或当前地区指南。在用于患者诊疗前，请核实所有输入数据及结果。"
 },
 ms: {
@@ -496,7 +546,9 @@ ms: {
   app_subtitle: "Untuk Pengamal Perubatan Primer · Pendidikan & Sokongan Keputusan Hal Ehwal Perubatan",
   nav_learn: "Belajar",
   nav_calc: "Saring Pesakit Saya",
-  cta_calc: "Teruskan ke Kalkulator Saringan →",
+  nav_symptoms: "Semakan Gejala",
+  cta_calc: "Teruskan ke Semakan Gejala →",
+  cta_calc2: "Teruskan ke Kalkulator Saringan →",
   s1_title: "Apakah Kegagalan Jantung?",
   s1_body: "Kegagalan jantung (HF) ialah sindrom klinikal, bukan satu penyakit tunggal. Ia berlaku apabila jantung tidak dapat diisi dengan darah atau mengepam darah seperti sepatutnya, menghasilkan corak gejala yang ciri-ciri — sesak nafas, keletihan, ketidaktahanan bersenam — dan tanda-tanda seperti pengekalan cecair. HF dikelaskan mengikut pecahan pengeluaran ventrikel kiri (LVEF): HFrEF (berkurang, LVEF ≤40%), HFmrEF (berkurang sedikit, LVEF 41–49%), dan HFpEF (terpelihara, LVEF ≥50%). Walaupun mempunyai fungsi pengepaman 'normal' pada ekokardiogram, pesakit HFpEF membawa beban kemasukan hospital dan kematian yang setanding dengan pesakit HFrEF.",
   s2_title: "Mengapa HFpEF Kritikal di Asia-Pasifik",
@@ -538,6 +590,10 @@ ms: {
   ntprobnp_low: "NT-proBNP di bawah ambang: HFpEF tidak mungkin. Teruskan pemantauan; nilai semula jika gejala berubah.",
   ntprobnp_high: "NT-proBNP pada atau melebihi ambang: rujuk kepada pakar kardiologi untuk penilaian lanjut (ekokardiografi disyorkan).",
   threshold_note: "Jalur kebarangkalian (Rendah <20%, Sederhana 20–70%, Tinggi >70%) dan ambang NT-proBNP (125 pg/mL, dalam keadaan bukan akut) adalah rangka kerja triage praktikal; penerbitan asal HFpEF-ABA itu sendiri tidak menyatakan titik potong kategori yang disahkan. Alat ini menyokong, dan tidak menggantikan, pertimbangan klinikal.",
+  symptom_checker_title: "Adakah pesakit ini mempunyai mana-mana gejala berikut?",
+  symptom_checker_intro: "Pilih semua yang berkenaan. Ini adalah gesaan pantas, bukan penilaian berskor.",
+  symptom_prompt_positive: "Corak gejala ini konsisten dengan kemungkinan HFpEF, terutamanya jika faktor risiko turut hadir. Pertimbangkan untuk menyaring pesakit ini sekarang.",
+  symptom_prompt_negative: "Tiada gejala utama dipilih. Jika kecurigaan klinikal berterusan atas sebab lain, anda masih boleh meneruskan ke saringan.",
   footer_disclaimer: "Untuk kegunaan pendidikan dan sokongan keputusan klinikal sahaja. Bukan pengganti pertimbangan klinikal atau garis panduan serantau semasa. Sahkan semua input dan output sebelum digunakan dalam penjagaan pesakit."
 }
 };
@@ -587,8 +643,47 @@ function renderLanguage(lang){
 
   $('footerDisclaimer').innerHTML = '<b>' + (lang==='en' ? 'Note:' : '') + '</b> ' + t.footer_disclaimer;
 
+  renderSymptomChecklist(t);
+
   // re-run calculator text (awaiting / results) in new language
   calc();
+}
+
+function renderSymptomChecklist(t){
+  const container = $('symptomCheckboxList');
+  container.innerHTML = '';
+  t.s3_symptoms.forEach((label, i)=>{
+    const row = document.createElement('div');
+    row.className = 'symptom-item';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.id = 'symptom_'+i;
+    cb.dataset.symptomIndex = i;
+    cb.addEventListener('change', updateSymptomPrompt);
+    const lbl = document.createElement('label');
+    lbl.setAttribute('for', 'symptom_'+i);
+    lbl.textContent = label;
+    row.appendChild(cb); row.appendChild(lbl);
+    container.appendChild(row);
+  });
+  updateSymptomPrompt();
+}
+
+function updateSymptomPrompt(){
+  const t = T[currentLang];
+  const checked = document.querySelectorAll('#symptomCheckboxList input[type=checkbox]:checked').length;
+  const box = $('symptomPromptBox');
+  if(checked >= 2){
+    box.textContent = t.symptom_prompt_positive;
+    box.style.borderLeftColor = 'var(--high)';
+    box.style.background = '#FCEEEE';
+    box.style.color = '#7A2224';
+  } else {
+    box.textContent = t.symptom_prompt_negative;
+    box.style.borderLeftColor = 'var(--muted)';
+    box.style.background = '#F5F8F6';
+    box.style.color = 'var(--ink)';
+  }
 }
 
 $('langSelect').addEventListener('change', function(){ renderLanguage(this.value); });
@@ -605,13 +700,15 @@ document.querySelectorAll('nav.tabs button').forEach(btn=>{
     $('panel-'+btn.dataset.tab).style.display='block';
   });
 });
-$('gotoCalcBtn').addEventListener('click', ()=>{
+function goToTab(tabName){
   document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
-  document.querySelector('nav.tabs button[data-tab="calc"]').classList.add('active');
+  document.querySelector('nav.tabs button[data-tab="'+tabName+'"]').classList.add('active');
   document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
-  $('panel-calc').style.display='block';
+  $('panel-'+tabName).style.display='block';
   window.scrollTo({top:0, behavior:'smooth'});
-});
+}
+$('gotoCalcBtn').addEventListener('click', ()=> goToTab('symptoms'));
+$('gotoCalcFromSymptomsBtn').addEventListener('click', ()=> goToTab('calc'));
 
 /* ================= AF TOGGLE ================= */
 $('afSeg').querySelectorAll('button').forEach(btn=>{
