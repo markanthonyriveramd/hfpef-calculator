@@ -66,6 +66,16 @@
   }
   .cta-btn:hover{ background:var(--deep); }
 
+  .calc-actions{ display:flex; gap:10px; margin-top:18px; }
+  .calc-btn{
+    flex:1; border:none; padding:13px 18px; border-radius:12px;
+    font-weight:700; font-size:14px; cursor:pointer; font-family:'Inter',sans-serif;
+  }
+  .calc-btn.primary{ background:var(--dark); color:#fff; }
+  .calc-btn.primary:hover{ background:var(--deep); }
+  .calc-btn.secondary{ background:#fff; color:var(--dark); border:1.5px solid var(--line); }
+  .calc-btn.secondary:hover{ background:#F5F8F6; border-color:var(--brand); }
+
   .symptom-item{ display:flex; align-items:flex-start; gap:10px; padding:11px 0; border-bottom:1px solid var(--line); }
   .symptom-item:last-child{ border-bottom:none; }
   .symptom-item input[type=checkbox]{ width:19px; height:19px; margin-top:1px; accent-color:var(--brand); flex:none; }
@@ -229,6 +239,10 @@
         <label data-i18n="af_label"></label>
         <div class="seg" id="afSeg"><button data-v="1" data-i18n="yes"></button><button data-v="0" data-i18n="no"></button></div>
       </div>
+      <div class="calc-actions">
+        <button class="calc-btn primary" id="calcBtn" data-i18n="btn_calculate"></button>
+        <button class="calc-btn secondary" id="resetBtn" data-i18n="btn_reset"></button>
+      </div>
     </div>
   </div>
 
@@ -311,6 +325,8 @@ en: {
   bmi_label: "Calculated BMI",
   af_label: "Atrial fibrillation (history of)",
   yes: "Yes",
+  btn_calculate: "Calculate",
+  btn_reset: "Reset",
   no: "No",
   result_title: "Result & Recommended Action",
   awaiting: "Enter all patient values to calculate.",
@@ -373,6 +389,8 @@ ko: {
   bmi_label: "계산된 BMI",
   af_label: "심방세동 (과거력)",
   yes: "예",
+  btn_calculate: "계산하기",
+  btn_reset: "초기화",
   no: "아니오",
   result_title: "결과 및 권장 조치",
   awaiting: "계산하려면 모든 환자 값을 입력하세요.",
@@ -435,6 +453,8 @@ th: {
   bmi_label: "ดัชนีมวลกายที่คำนวณได้",
   af_label: "ภาวะหัวใจเต้นผิดจังหวะชนิดเอเทรียลฟิบริลเลชัน (ประวัติ)",
   yes: "ใช่",
+  btn_calculate: "คำนวณ",
+  btn_reset: "รีเซ็ต",
   no: "ไม่ใช่",
   result_title: "ผลลัพธ์และคำแนะนำการดำเนินการ",
   awaiting: "กรอกค่าของผู้ป่วยทั้งหมดเพื่อคำนวณ",
@@ -497,6 +517,8 @@ vi: {
   bmi_label: "BMI đã tính",
   af_label: "Rung nhĩ (tiền sử)",
   yes: "Có",
+  btn_calculate: "Tính toán",
+  btn_reset: "Đặt lại",
   no: "Không",
   result_title: "Kết quả & Hành động Đề xuất",
   awaiting: "Nhập đầy đủ các giá trị của bệnh nhân để tính toán.",
@@ -559,6 +581,8 @@ zh: {
   bmi_label: "计算所得BMI",
   af_label: "心房颤动（既往史）",
   yes: "是",
+  btn_calculate: "计算",
+  btn_reset: "重置",
   no: "否",
   result_title: "结果与建议措施",
   awaiting: "请输入所有患者数值以进行计算。",
@@ -621,6 +645,8 @@ ms: {
   bmi_label: "BMI yang Dikira",
   af_label: "Fibrilasi atrium (sejarah)",
   yes: "Ya",
+  btn_calculate: "Kira",
+  btn_reset: "Set Semula",
   no: "Tidak",
   result_title: "Keputusan & Tindakan Disyorkan",
   awaiting: "Masukkan semua nilai pesakit untuk mengira.",
@@ -828,6 +854,17 @@ function calc(){
 $('age').addEventListener('input', calc);
 $('ht').addEventListener('input', calc);
 $('wt').addEventListener('input', calc);
+
+$('calcBtn').addEventListener('click', calc);
+$('resetBtn').addEventListener('click', function(){
+  $('age').value = '';
+  $('ht').value = '';
+  $('wt').value = '';
+  $('afSeg').querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+  $('ntprobnp').value = '';
+  $('ntprobnpResult').classList.remove('show');
+  calc();
+});
 
 $('ntprobnp').addEventListener('input', function(){
   const t = T[currentLang];
