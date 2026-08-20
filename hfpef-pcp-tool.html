@@ -126,6 +126,9 @@
   .ntprobnp-box label{ font-size:12px; font-weight:600; display:block; margin-bottom:6px; }
   .ntprobnp-box input{ width:100%; border:1.5px solid rgba(255,255,255,0.25); background:rgba(255,255,255,0.08); color:#fff; border-radius:8px; padding:9px 10px; font-family:'IBM Plex Mono',monospace; font-size:14px; }
   .ntprobnp-result{ margin-top:10px; font-size:12.5px; line-height:1.6; display:none; }
+  .ntprobnp-box .seg{ border-color:rgba(255,255,255,0.25); }
+  .ntprobnp-box .seg button{ background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); border-right-color:rgba(255,255,255,0.25); font-size:11.5px; padding:7px 6px; }
+  .ntprobnp-box .seg button.on{ background:rgba(255,255,255,0.22); color:#fff; }
   .ntprobnp-result.show{ display:block; }
 
   .threshold-note{ font-size:11px; color:var(--muted); line-height:1.6; margin-top:14px; padding-top:12px; border-top:1px dashed var(--line); }
@@ -261,6 +264,10 @@
 
       <div class="ntprobnp-box" id="ntprobnpBox">
         <label data-i18n="ntprobnp_prompt"></label>
+        <div class="seg" id="ntprobnpUnitSeg" style="margin-bottom:8px;">
+          <button data-v="pgml" class="on">pg/mL (= ng/L)</button>
+          <button data-v="pmol">pmol/L</button>
+        </div>
         <input type="number" id="ntprobnp" placeholder="pg/mL">
         <div class="ntprobnp-result" id="ntprobnpResult"></div>
       </div>
@@ -336,7 +343,7 @@ en: {
   interm_action: "Recommended next step: order NT-proBNP to guide the referral decision.",
   high_title: "High probability",
   high_action: "Recommended next step: refer to cardiology for further evaluation.",
-  ntprobnp_prompt: "Enter NT-proBNP result (pg/mL) to determine next step:",
+  ntprobnp_prompt: "Enter NT-proBNP result to determine next step:",
   ntprobnp_low: "NT-proBNP below threshold: HFpEF unlikely. Continue monitoring; reassess if symptoms change.",
   ntprobnp_high: "NT-proBNP at or above threshold: refer to cardiologist for further evaluation (echocardiography recommended).",
   threshold_note: "Probability bands (Low <20%, Intermediate 20–70%, High >70%) and the NT-proBNP threshold (125 pg/mL, non-acute setting) are a pragmatic triage framework; the original HFpEF-ABA publication does not itself specify validated categorical cutoffs. This tool supports, and does not replace, clinical judgment.",
@@ -400,7 +407,7 @@ ko: {
   interm_action: "권장 다음 단계: 의뢰 결정을 위해 NT-proBNP 검사를 시행하십시오.",
   high_title: "높은 확률",
   high_action: "권장 다음 단계: 추가 평가를 위해 심장내과로 의뢰하십시오.",
-  ntprobnp_prompt: "다음 단계를 결정하기 위해 NT-proBNP 결과(pg/mL)를 입력하세요:",
+  ntprobnp_prompt: "다음 단계를 결정하기 위해 NT-proBNP 결과를 입력하세요:",
   ntprobnp_low: "NT-proBNP가 기준치 미만: HFpEF 가능성이 낮습니다. 관찰을 지속하고 증상 변화 시 재평가하십시오.",
   ntprobnp_high: "NT-proBNP가 기준치 이상: 추가 평가를 위해 심장내과로 의뢰하십시오 (심초음파 권장).",
   threshold_note: "확률 구간(낮음 <20%, 중간 20–70%, 높음 >70%)과 NT-proBNP 기준치(비급성 상황에서 125 pg/mL)는 실용적인 중증도 분류 체계이며, 원 HFpEF-ABA 논문 자체에서 검증된 범주형 절단값을 명시하지는 않았습니다. 이 도구는 임상적 판단을 보조하는 것이며, 이를 대체하지 않습니다.",
@@ -464,7 +471,7 @@ th: {
   interm_action: "ขั้นตอนถัดไปที่แนะนำ: สั่งตรวจ NT-proBNP เพื่อช่วยตัดสินใจเรื่องการส่งต่อ",
   high_title: "ความน่าจะเป็นสูง",
   high_action: "ขั้นตอนถัดไปที่แนะนำ: ส่งต่อไปยังแพทย์โรคหัวใจเพื่อประเมินเพิ่มเติม",
-  ntprobnp_prompt: "กรอกผล NT-proBNP (pg/mL) เพื่อกำหนดขั้นตอนถัดไป:",
+  ntprobnp_prompt: "กรอกผล NT-proBNP เพื่อกำหนดขั้นตอนถัดไป:",
   ntprobnp_low: "NT-proBNP ต่ำกว่าเกณฑ์: โอกาสเป็น HFpEF ต่ำ ควรติดตามอาการต่อเนื่องและประเมินซ้ำหากอาการเปลี่ยนแปลง",
   ntprobnp_high: "NT-proBNP เท่ากับหรือสูงกว่าเกณฑ์: ส่งต่อไปยังแพทย์โรคหัวใจเพื่อประเมินเพิ่มเติม (แนะนำให้ตรวจอัลตราซาวด์หัวใจ)",
   threshold_note: "ช่วงความน่าจะเป็น (ต่ำ <20%, ปานกลาง 20–70%, สูง >70%) และเกณฑ์ NT-proBNP (125 pg/mL ในสถานการณ์ที่ไม่เฉียบพลัน) เป็นกรอบการคัดแยกเชิงปฏิบัติ งานตีพิมพ์ต้นฉบับของ HFpEF-ABA ไม่ได้ระบุค่าตัดแบ่งกลุ่มที่ผ่านการตรวจสอบความถูกต้องไว้อย่างชัดเจน เครื่องมือนี้เป็นเพียงตัวช่วยสนับสนุนการตัดสินใจทางคลินิก ไม่ใช่สิ่งทดแทนดุลยพินิจทางคลินิก",
@@ -528,7 +535,7 @@ vi: {
   interm_action: "Bước tiếp theo được đề xuất: chỉ định xét nghiệm NT-proBNP để hỗ trợ quyết định chuyển tuyến.",
   high_title: "Xác suất cao",
   high_action: "Bước tiếp theo được đề xuất: chuyển đến chuyên khoa tim mạch để đánh giá thêm.",
-  ntprobnp_prompt: "Nhập kết quả NT-proBNP (pg/mL) để xác định bước tiếp theo:",
+  ntprobnp_prompt: "Nhập kết quả NT-proBNP để xác định bước tiếp theo:",
   ntprobnp_low: "NT-proBNP dưới ngưỡng: khả năng HFpEF thấp. Tiếp tục theo dõi; đánh giá lại nếu triệu chứng thay đổi.",
   ntprobnp_high: "NT-proBNP bằng hoặc trên ngưỡng: chuyển đến bác sĩ tim mạch để đánh giá thêm (khuyến nghị siêu âm tim).",
   threshold_note: "Các mức xác suất (Thấp <20%, Trung bình 20–70%, Cao >70%) và ngưỡng NT-proBNP (125 pg/mL, trong bối cảnh không cấp tính) là một khung phân loại thực tiễn; bài báo gốc về HFpEF-ABA không tự quy định các ngưỡng phân loại đã được xác thực. Công cụ này hỗ trợ, chứ không thay thế, đánh giá lâm sàng.",
@@ -592,7 +599,7 @@ zh: {
   interm_action: "建议的下一步：检测NT-proBNP以协助转诊决策。",
   high_title: "高概率",
   high_action: "建议的下一步：转诊至心脏科进行进一步评估。",
-  ntprobnp_prompt: "输入NT-proBNP结果（pg/mL）以确定下一步：",
+  ntprobnp_prompt: "输入NT-proBNP结果以确定下一步：",
   ntprobnp_low: "NT-proBNP低于阈值：HFpEF可能性低。请继续随访观察，若症状变化则重新评估。",
   ntprobnp_high: "NT-proBNP达到或高于阈值：转诊至心脏科医生进行进一步评估（建议行超声心动图检查）。",
   threshold_note: "概率区间（低 <20%，中 20–70%，高 >70%）及NT-proBNP阈值（非急性情况下为125 pg/mL）是一种实用的分诊框架；HFpEF-ABA原始文献本身并未规定经过验证的分类切点。本工具用于辅助而非替代临床判断。",
@@ -656,7 +663,7 @@ ms: {
   interm_action: "Langkah seterusnya disyorkan: tempah NT-proBNP untuk membantu keputusan rujukan.",
   high_title: "Kebarangkalian tinggi",
   high_action: "Langkah seterusnya disyorkan: rujuk kepada kardiologi untuk penilaian lanjut.",
-  ntprobnp_prompt: "Masukkan keputusan NT-proBNP (pg/mL) untuk menentukan langkah seterusnya:",
+  ntprobnp_prompt: "Masukkan keputusan NT-proBNP untuk menentukan langkah seterusnya:",
   ntprobnp_low: "NT-proBNP di bawah ambang: HFpEF tidak mungkin. Teruskan pemantauan; nilai semula jika gejala berubah.",
   ntprobnp_high: "NT-proBNP pada atau melebihi ambang: rujuk kepada pakar kardiologi untuk penilaian lanjut (ekokardiografi disyorkan).",
   threshold_note: "Jalur kebarangkalian (Rendah <20%, Sederhana 20–70%, Tinggi >70%) dan ambang NT-proBNP (125 pg/mL, dalam keadaan bukan akut) adalah rangka kerja triage praktikal; penerbitan asal HFpEF-ABA itu sendiri tidak menyatakan titik potong kategori yang disahkan. Alat ini menyokong, dan tidak menggantikan, pertimbangan klinikal.",
@@ -863,16 +870,33 @@ $('resetBtn').addEventListener('click', function(){
   $('afSeg').querySelectorAll('button').forEach(b=>b.classList.remove('on'));
   $('ntprobnp').value = '';
   $('ntprobnpResult').classList.remove('show');
+  $('ntprobnpUnitSeg').querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+  $('ntprobnpUnitSeg').querySelector('button[data-v="pgml"]').classList.add('on');
+  $('ntprobnp').placeholder = 'pg/mL';
   calc();
 });
 
-$('ntprobnp').addEventListener('input', function(){
+const NTPROBNP_PMOL_TO_PGML = 8.457;
+
+function checkNtProbnp(){
   const t = T[currentLang];
-  const val = parseFloat(this.value);
+  const raw = parseFloat($('ntprobnp').value);
+  const unit = segVal('ntprobnpUnitSeg');
   const box = $('ntprobnpResult');
-  if(this.value===''){ box.classList.remove('show'); return; }
+  if($('ntprobnp').value===''){ box.classList.remove('show'); return; }
+  const valPgMl = unit === 'pmol' ? raw * NTPROBNP_PMOL_TO_PGML : raw;
   box.classList.add('show');
-  box.textContent = val < 125 ? t.ntprobnp_low : t.ntprobnp_high;
+  box.textContent = valPgMl < 125 ? t.ntprobnp_low : t.ntprobnp_high;
+}
+
+$('ntprobnp').addEventListener('input', checkNtProbnp);
+$('ntprobnpUnitSeg').querySelectorAll('button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    $('ntprobnpUnitSeg').querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    $('ntprobnp').placeholder = btn.dataset.v === 'pmol' ? 'pmol/L' : 'pg/mL';
+    checkNtProbnp();
+  });
 });
 
 /* ================= INIT ================= */
