@@ -723,8 +723,11 @@ function renderLanguage(lang){
 
   renderSymptomChecklist(t);
 
-  // re-run calculator text (awaiting / results) in new language
-  calc();
+  // Language switch resets the score display rather than silently
+  // recomputing — Calculate must be clicked to see a risk result.
+  // BMI is a simple live preview, not part of "the calculation", so it stays.
+  updateBmiDisplay();
+  showAwaitingState();
 }
 
 function renderSymptomChecklist(t){
@@ -793,7 +796,7 @@ $('afSeg').querySelectorAll('button').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     $('afSeg').querySelectorAll('button').forEach(b=>b.classList.remove('on'));
     btn.classList.add('on');
-    calc();
+    showAwaitingState();
   });
 });
 
@@ -809,14 +812,30 @@ function setGauge(fraction, color){
 }
 
 /* ================= CALCULATOR ================= */
+function updateBmiDisplay(){
+  const ht = parseFloat($('ht').value), wt = parseFloat($('wt').value);
+  const bmi = ($('ht').value!=='' && $('wt').value!=='') ? wt/((ht/100)*(ht/100)) : NaN;
+  $('bmiOut').textContent = !isNaN(bmi) ? bmi.toFixed(1)+' kg/m\u00B2' : '\u2014';
+}
+
+function showAwaitingState(){
+  const t = T[currentLang];
+  $('scoreNum').textContent = '\u2014';
+  $('cat').textContent = '\u2014';
+  $('cat').className = 'gauge-cat cat-neutral';
+  $('actionBox').innerHTML = t.awaiting;
+  $('ntprobnpBox').classList.remove('show');
+  setGauge(0, 'rgba(255,255,255,0.18)');
+}
+
 function calc(){
+  updateBmiDisplay();
   const t = T[currentLang];
   const ageStr = $('age').value, htStr = $('ht').value, wtStr = $('wt').value;
   const afSel = segVal('afSeg');
 
   const ht = parseFloat(htStr), wt = parseFloat(wtStr);
   const bmi = (htStr!=='' && wtStr!=='') ? wt/((ht/100)*(ht/100)) : NaN;
-  $('bmiOut').textContent = !isNaN(bmi) ? bmi.toFixed(1)+' kg/m\u00B2' : '\u2014';
 
   const complete = ageStr!=='' && htStr!=='' && wtStr!=='' && afSel!==null;
 
@@ -858,9 +877,9 @@ function calc(){
   setGauge(prob/100, color);
 }
 
-$('age').addEventListener('input', calc);
-$('ht').addEventListener('input', calc);
-$('wt').addEventListener('input', calc);
+$('age').addEventListener('input', showAwaitingState);
+$('ht').addEventListener('input', ()=>{ updateBmiDisplay(); showAwaitingState(); });
+$('wt').addEventListener('input', ()=>{ updateBmiDisplay(); showAwaitingState(); });
 
 $('calcBtn').addEventListener('click', calc);
 $('resetBtn').addEventListener('click', function(){
@@ -873,7 +892,8 @@ $('resetBtn').addEventListener('click', function(){
   $('ntprobnpUnitSeg').querySelectorAll('button').forEach(b=>b.classList.remove('on'));
   $('ntprobnpUnitSeg').querySelector('button[data-v="pgml"]').classList.add('on');
   $('ntprobnp').placeholder = 'pg/mL';
-  calc();
+  updateBmiDisplay();
+  showAwaitingState();
 });
 
 const NTPROBNP_PMOL_TO_PGML = 8.457;
